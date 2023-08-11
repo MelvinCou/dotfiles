@@ -1,0 +1,8 @@
+{
+    "terminal.integrated.automationProfile.linux": {
+        "overrideName": true,
+        "color": "terminal.ansiGreen",
+        "path": "/bin/zsh"
+    },
+    "terminal.integrated.fontFamily": "MesloLGS NF"
+}
