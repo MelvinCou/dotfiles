@@ -1,0 +1,31 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!{{ lookPath "sh" }}
+echo "Installing MesloGS font"
+fontpath="${XDG_DATA_HOME:-$HOME/.local/share}"/fonts/MesloGS
+mkdir -p $fontpath && cd $fontpath
+wget -q https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+wget -q https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
+wget -q https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
+wget -q https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
+fc-cache -f
+
+{{   if eq .chezmoi.osRelease.id "debian" -}}
+sudo apt update -qq
+DEBIAN_FRONTEND=noninteractive sudo apt install -qqq --no-install-recommends bat
+
+{{   else if eq .chezmoi.osRelease.id "archlinux" -}}
+# Work in temp folder
+cd ${mktemp -d}
+# Install yay
+sudo pacman -S --needed --noconfirm git base-devel && git clone --depth 1 https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+yay -Sa --noconfirm visual-studio-code-bin brave-bin
+{{   end -}}
+
+echo "Changing shell to zsh"
+sudo chsh -s $(which zsh) $(whoami)
+echo "Installing oh my zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "Installing powerlevel10k"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+{{ end -}}
