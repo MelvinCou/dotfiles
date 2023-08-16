@@ -11,7 +11,7 @@ fc-cache -f
 
 {{   if eq .chezmoi.osRelease.id "debian" -}}
 sudo apt update -qq
-DEBIAN_FRONTEND=noninteractive sudo apt install -qqq --no-install-recommends bat
+DEBIAN_FRONTEND=noninteractive sudo apt install -qqq --no-install-recommends bat ripgrep sd tldr ncdu duf btop
 
 {{   else if eq .chezmoi.osRelease.id "archlinux" -}}
 # Work in temp folder
