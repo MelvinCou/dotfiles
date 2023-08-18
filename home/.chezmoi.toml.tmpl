@@ -1,0 +1,7 @@
+{{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- if $codespaces -}}
+{{-   writeToStdout "💡 Codespace detected\n" -}}
+{{- end -}}
+
+[data]
+    codespaces = {{ $codespaces }}

@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "linux" }}
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
@@ -9,7 +10,6 @@
     url = "https://github.com/romkatv/powerlevel10k/archive/v1.18.0.tar.gz"
     exact = true
     stripComponents = 1
-
 {{-   $fontDir := ".local/share/fonts" }}
 {{-   range (list
         "MesloLGS NF Regular.ttf"
@@ -20,4 +20,6 @@
     type = "file"
     url = "https://github.com/romkatv/powerlevel10k-media/raw/master/{{ . }}"
     refreshPeriod = "168h"
+{{ end }}
+
 {{- end }}
