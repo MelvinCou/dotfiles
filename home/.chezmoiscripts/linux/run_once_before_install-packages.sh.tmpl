@@ -1,19 +1,31 @@
 #!{{ lookPath "sh" }}
+set -eu
 
-{{   if eq .chezmoi.osRelease.idLike "debian" -}}
-sudo apt update -qqy
-DEBIAN_FRONTEND=noninteractive sudo apt install -qqqy --no-install-recommends bat ripgrep tldr ncdu
-{{      if ge .chezmoi.osRelease.versionID "22.04" -}}
-DEBIAN_FRONTEND=noninteractive sudo apt install -qqqy --no-install-recommends sd duf btop
-{{      end -}}
+{{ $packages := list
+     "bat"
+     "ncdu"
+     "ripgrep"
+     "tldr"
+     "vim"
+     "zsh" -}}
 
-{{   else if eq .chezmoi.osRelease.id "archlinux" -}}
+{{ if .debian -}}
+{{   if not .codespaces -}}
+{{ $packages = mustAppend $packages (list "btop" "duf" "sd") -}}
+{{   end -}}
+echo "Installing packages"
+sudo apt-get update -qqy
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommends {{ $packages | join " " }}
+
+{{ else if eq .chezmoi.osRelease.id "arch" -}}
 # Work in temp folder
-cd ${mktemp -d}
-echo "Installing yay"
-sudo pacman -S --needed --noconfirm git base-devel && git clone --depth 1 https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si
+cd $(mktemp -d)
+echo "Installing packages"
+sudo pacman -S --needed --noconfirm git base-devel {{ $packages | join " " }} && git clone --depth 1 https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
+{{   if not .wsl -}}
 yay -Sa --noconfirm visual-studio-code-bin brave-bin
 {{   end -}}
+{{ end -}}
 
 echo "Changing shell to zsh"
 sudo chsh -s $(which zsh) $(whoami)

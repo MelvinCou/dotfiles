@@ -1,7 +1,22 @@
+{{- $debian:= eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
 {{- $codespaces:= env "CODESPACES" | not | not -}}
+{{- if $debian -}}
+{{-   writeToStdout "💡 Script launched in Debian\n" -}}
+{{- end -}}
 {{- if $codespaces -}}
-{{-   writeToStdout "💡 Codespace detected\n" -}}
+{{-   writeToStdout "👀 Codespace detected\n" -}}
+{{- end -}}
+
+{{- $wsl:= false -}}
+{{- if eq .chezmoi.osRelease.id "arch" -}}
+{{-   writeToStdout "💡 Script launched in Archlinux\n" -}}
+{{-   $wsl = contains "windows" .chezmoi.kernel.osrelease -}}
+{{-   if $wsl -}}
+{{-     writeToStdout "👀 WSL detected\n" -}}
+{{-   end -}}
 {{- end -}}
 
 [data]
     codespaces = {{ $codespaces }}
+    debian = {{ $debian }}
+    wsl = {{ $wsl }}
