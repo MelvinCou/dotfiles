@@ -16,6 +16,11 @@
 {{-   end -}}
 {{- end -}}
 
+{{- if eq .chezmoi.os "windows" -}}
+{{-   writeToStdout "💡 Script launched in Windows\n" -}}
+{{-   $wsl = promptBool "Install Arch WSL? (y/n)" false -}}
+{{- end -}}
+
 [data]
     codespaces = {{ $codespaces }}
     debian = {{ $debian }}

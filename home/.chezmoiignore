@@ -3,3 +3,8 @@
 .zshrc
 .p10k.zsh
 {{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+.chezmoiscripts/windows/**
+Documents/**
+{{ end }}

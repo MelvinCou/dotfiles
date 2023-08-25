@@ -1,11 +1,11 @@
 # Dotfiles
 
-- Linux
-    - Debian (github codespace)
-    - Arch
-- Windows (todo)
-    - gitposh
-    - WSL with Arch (which runs chezmoi again...)
+- Linux (Debian, Arch)
+    - zsh, oh my zsh, powerlevel10k
+    - basic vim configuration
+- Windows
+    - oh my posh
+    - WSL with Arch (which runs chezmoi again...) ❌ not tested
 
 Run the script :
 
