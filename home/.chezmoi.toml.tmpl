@@ -1,24 +1,27 @@
-{{- $debian:= eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
-{{- $codespaces:= env "CODESPACES" | not | not -}}
-{{- if $debian -}}
-{{-   writeToStdout "💡 Script launched in Debian\n" -}}
-{{- end -}}
-{{- if $codespaces -}}
-{{-   writeToStdout "👀 Codespace detected\n" -}}
-{{- end -}}
-
+{{- $codespaces:= or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") -}}
+{{- $debian:= false -}}
 {{- $wsl:= false -}}
-{{- if eq .chezmoi.osRelease.id "arch" -}}
-{{-   writeToStdout "💡 Script launched in Archlinux\n" -}}
-{{-   $wsl = contains "windows" .chezmoi.kernel.osrelease -}}
-{{-   if $wsl -}}
-{{-     writeToStdout "👀 WSL detected\n" -}}
-{{-   end -}}
+
+{{- if $codespaces -}}
+    {{- writeToStdout "👀 Codespace detected\n" -}}
 {{- end -}}
 
-{{- if eq .chezmoi.os "windows" -}}
-{{-   writeToStdout "💡 Script launched in Windows\n" -}}
-{{-   $wsl = promptBool "Install Arch WSL? (y/n)" false -}}
+{{- if eq .chezmoi.os "linux" -}}
+    {{- $debian:= eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
+    {{- if $debian -}}
+        {{- writeToStdout "💡 Script launched in Debian\n" -}}
+    {{- end -}}
+
+    {{- if eq .chezmoi.osRelease.id "arch" -}}
+        {{- writeToStdout "💡 Script launched in Archlinux\n" -}}
+        {{- $wsl = contains "windows" .chezmoi.kernel.osrelease -}}
+        {{- if $wsl -}}
+            {{- writeToStdout "👀 WSL detected\n" -}}
+        {{- end -}}
+    {{- end -}}
+{{- else if eq .chezmoi.os "windows" -}}
+    {{- writeToStdout "💡 Script launched in Windows\n" -}}
+    {{- $wsl = promptBool "Install Arch WSL? (y/n)" false -}}
 {{- end -}}
 
 [data]
