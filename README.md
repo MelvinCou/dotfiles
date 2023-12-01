@@ -10,5 +10,9 @@
 Run the script :
 
 ```sh
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init -ad 1 MelvinCou
+# Linux
+sh -c $(curl -fsLS get.chezmoi.io) -- init -ad 1 MelvinCou
+# Windows
+winget install -e --accept-source-agreements --accept-package-agreements --scope CurrentUser twpayne.chezmoi
+chezmoi init -ad 1 MelvinCou
 ```
