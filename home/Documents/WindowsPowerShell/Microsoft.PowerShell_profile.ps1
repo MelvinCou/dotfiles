@@ -16,10 +16,6 @@
 # Import Terminal Icons
 Import-Module -Name Terminal-Icons
 
-# Find out if the current user identity is elevated (has admin rights)
-$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-$principal = New-Object Security.Principal.WindowsPrincipal $identity
-$isAdmin = $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 $ProgressPreference = 'SilentlyContinue'
 
 # If so and the current host is a command line, then change to red color 
@@ -41,11 +37,6 @@ function HKLM: { Set-Location HKLM: }
 function HKCU: { Set-Location HKCU: }
 function Env: { Set-Location Env: }
 
-$Host.UI.RawUI.WindowTitle = "PowerShell {0}" -f $PSVersionTable.PSVersion.ToString()
-if ($isAdmin) {
-    $Host.UI.RawUI.WindowTitle += " [ADMIN]"
-}
-
 # Simple function to start a new elevated process. If arguments are supplied then 
 # a single command is started with admin rights; if not then a new admin instance
 # of PowerShell is started.
@@ -62,11 +53,6 @@ function admin {
 # with elevated rights. 
 Set-Alias -Name su -Value admin
 Set-Alias -Name sudo -Value admin
-
-# We don't need these any more; they were just temporary variables to get to $isAdmin. 
-# Delete them to prevent cluttering up the user profile. 
-Remove-Variable identity
-Remove-Variable principal
 
 Function Test-CommandExists {
     Param ($command)
