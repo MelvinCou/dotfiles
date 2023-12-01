@@ -3,7 +3,7 @@
 # Do things in tmp
 Set-Location $env:TMP
 
-winget install -e --accept-source-agreements --accept-package-agreements JanDeDobbeleer.OhMyPosh
+winget install -e --accept-source-agreements --accept-package-agreements --scope CurrentUser JanDeDobbeleer.OhMyPosh
 Install-Module -Name Terminal-Icons -Repository PSGallery -Scope CurrentUser
 
 # Ask for admin
@@ -15,7 +15,9 @@ if (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdenti
 }
 
 # Choco install
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 # Web client used to download files
 $webClient = New-Object System.Net.WebClient
@@ -43,19 +45,21 @@ if ($fontFamilies -notcontains "CaskaydiaCove NF") {
 
 # Install Arch wsl
 {{- if .wsl -}}
-    $archzst = ".\archlinux.tar.zst"
+    $archZst = ".\archlinux.tar.zst"
+    $archVer = "20231201.0.196455"
     $zstd = ".\zstd"
-    $zstdzip = "$zstd.zip"
+    $zstdVer = "v1.5.5"
+    $zstdZip = "zstd.zip"
     # Enable wsl
     dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
     dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
     wsl --set-default-version 2
     # Download Arch rootfs
-    $webClient.DownloadFile("https://gitlab.archlinux.org/archlinux/archlinux-docker/-/package_files/4914/download", $archzst)
+    $webClient.DownloadFile("https://gitlab.archlinux.org/api/v4/projects/10185/packages/generic/rootfs/$archVer/base-$archVer.tar.zst", $archZst)
     # zstd needed for decompression
-    $webClient.DownloadFile("https://github.com/facebook/zstd/releases/download/v1.5.5/zstd-v1.5.5-win64.zip", $zstdzip)
-    Expand-Archive -Path $zstdzip -DestinationPath $zstd -Force
-    .\zstd-v1.5.5-win64\zstd.exe -d $archzst -o ".\arch.tar"
+    $webClient.DownloadFile("https://github.com/facebook/zstd/releases/download/$zstdVer/zstd-$zstdVer-win64.zip", $zstdZip)
+    Expand-Archive -Path $zstdZip -DestinationPath $zstd -Force
+    .\zstd-$zstdVer-win64\zstd.exe -d $archZst -o ".\arch.tar"
     mkdir -Force "$env:HOME/Archlinux"
     # Import Arch
     wsl --import Archlinux "$env:HOME/Archlinux" ".\arch.tar"
@@ -74,6 +78,7 @@ if ($fontFamilies -notcontains "CaskaydiaCove NF") {
     usermod -aG wheel arch
     echo "Setting his password"
     passwd arch
+    su arch
 
     echo "Running chezmoi... again???"
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init -ad 1 MelvinCou
