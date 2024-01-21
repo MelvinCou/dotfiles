@@ -1,4 +1,4 @@
-{{- $codespaces:= or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") -}}
+{{- $codespaces:= or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
 {{- $debian:= false -}}
 {{- $wsl:= false -}}
 

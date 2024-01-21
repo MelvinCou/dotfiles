@@ -1,29 +1,32 @@
 #!{{ lookPath "sh" }}
 set -eu
 
-{{ $packages := list
-     "bat"
-     "ncdu"
-     "ripgrep"
-     "tldr"
-     "vim"
-     "zsh" -}}
-
 {{ if .debian -}}
-{{   if not .codespaces -}}
-{{ $packages = mustAppend $packages (list "btop" "duf" "sd") -}}
-{{   end -}}
 echo "Installing packages"
 sudo apt-get update -qqy
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommends {{ $packages | join " " }}
+{{   range .packages.debian.base -}}
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommends {{ . }}
+{{   end -}}
+{{   if not .codespaces -}}
+{{     range .packages.debian.others -}}
+DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommends {{ . }}
+{{     end -}}
+{{   end -}}
 
 {{ else if eq .chezmoi.osRelease.id "arch" -}}
 # Work in temp folder
 cd $(mktemp -d)
 echo "Installing packages"
-sudo pacman -S --needed --noconfirm git base-devel {{ $packages | join " " }} && git clone --depth 1 https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
+{{ range .packages.debian.base -}}
+sudo pacman -S --needed --noconfirm git base-devel {{ . }}
+{{ end -}}
+git clone --depth 1 https://aur.archlinux.org/yay-bin.git
+cd yay-bin && makepkg -si --noconfirm
+
 {{   if not .wsl -}}
-yay -Sa --noconfirm visual-studio-code-bin brave-bin
+{{     range .packages.arch.aur -}}
+yay -Sa --noconfirm {{ . }}
+{{     end -}}
 {{   end -}}
 {{ end -}}
 
