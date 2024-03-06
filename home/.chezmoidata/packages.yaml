@@ -13,6 +13,7 @@ packages:
     - 'sd'
   arch:
     aur:
+    - 'rankmirrors'
     - 'visual-studio-code-bin'
     - 'brave-bin'
     - 'ttf-meslo-nerd-font-powerlevel10k'

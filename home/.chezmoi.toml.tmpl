@@ -14,7 +14,7 @@
 
     {{- if eq .chezmoi.osRelease.id "arch" -}}
         {{- writeToStdout "💡 Script launched in Archlinux\n" -}}
-        {{- $wsl = contains "windows" .chezmoi.kernel.osrelease -}}
+        {{- $wsl = contains "WSL" .chezmoi.kernel.osrelease -}}
         {{- if $wsl -}}
             {{- writeToStdout "👀 WSL detected\n" -}}
         {{- end -}}
