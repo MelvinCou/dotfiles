@@ -17,6 +17,10 @@ DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommend
 # Work in temp folder
 cd $(mktemp -d)
 echo "Installing packages"
+{{   if .wsl -}}
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+{{     end -}}
 sudo pacman -Sy --noconfirm
 {{ range .packages.debian.base -}}
 sudo pacman -S --needed --noconfirm git base-devel {{ . }}
