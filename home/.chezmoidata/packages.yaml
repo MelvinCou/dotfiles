@@ -1,19 +1,19 @@
 packages:
   debian:
     base:
-    - 'bat'
-    - 'ncdu'
-    - 'ripgrep'
-    - 'tldr'
-    - 'vim'
-    - 'zsh'
+      - bat
+      - ncdu
+      - ripgrep
+      - tldr
+      - vim
+      - zsh
     others:
-    - 'btop'
-    - 'duf'
-    - 'sd'
+      - btop
+      - duf
+      - sd
   arch:
     aur:
-    - 'rankmirrors'
-    - 'visual-studio-code-bin'
-    - 'brave-bin'
-    - 'ttf-meslo-nerd-font-powerlevel10k'
+      - rankmirrors
+      - visual-studio-code-bin
+      - brave-bin
+      - ttf-meslo-nerd-font-powerlevel10k
