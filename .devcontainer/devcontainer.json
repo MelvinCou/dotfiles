@@ -11,6 +11,14 @@
 			"enableNonRootDocker": "true",
 			"moby": "false"
 		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"redhat.vscode-yaml",
+				"casualjim.gotemplate"
+			]
+		}
 	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
