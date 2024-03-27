@@ -1,0 +1,9 @@
+services:
+  debian:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian
+  arch:
+    build:
+      context: .
+      dockerfile: Dockerfile.arch

@@ -1,0 +1,9 @@
+FROM debian
+
+RUN apt-get update -qqy && \
+    apt-get install -qqy sudo git curl && \
+    useradd -m -G sudo debian && \
+    passwd -d debian
+
+USER debian
+WORKDIR /home/debian

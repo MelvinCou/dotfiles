@@ -1,0 +1,9 @@
+FROM archlinux
+
+RUN pacman -Syq --noconfirm sudo git curl && \
+    useradd -m -G wheel arch && \
+    passwd -d arch && \
+    sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
+
+USER arch
+WORKDIR /home/arch
