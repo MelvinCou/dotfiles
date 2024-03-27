@@ -28,8 +28,8 @@ sudo pacman -S --needed --noconfirm git base-devel {{ . }}
 {{ if not .wsl }}
 {{   range .packages.arch.aur }}
 yay -Sa --noconfirm {{ . }}
+{{   end }}
 {{ end }}
 
 echo "Changing shell to zsh"
 sudo chsh -s $(which zsh) $(whoami)
-EOF
