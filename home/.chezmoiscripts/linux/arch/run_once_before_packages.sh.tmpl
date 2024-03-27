@@ -11,6 +11,7 @@ cd $(mktemp -d)
 echo "Installing packages"
 
 # yay
+sudo pacman -S --needed --noconfirm git base-devel
 git clone --depth 1 https://aur.archlinux.org/yay-bin.git
 cd yay-bin && makepkg -si --noconfirm
 # rankmirrors
@@ -22,7 +23,7 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirror
 
 sudo pacman -Sy --noconfirm
 {{ range .packages.debian.base }}
-sudo pacman -S --needed --noconfirm git base-devel {{ . }}
+sudo pacman -S --needed --noconfirm {{ . }}
 {{ end }}
 
 {{ if not .wsl }}
@@ -30,6 +31,3 @@ sudo pacman -S --needed --noconfirm git base-devel {{ . }}
 yay -Sa --noconfirm {{ . }}
 {{   end }}
 {{ end }}
-
-echo "Changing shell to zsh"
-sudo chsh -s $(which zsh) $(whoami)
