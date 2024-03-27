@@ -1,5 +1,10 @@
 {{ if ne .chezmoi.os "linux" }}
-.chezmoiscripts/linux/**
+{{   if not .debian }}
+.chezmoiscripts/linux/run_once_before_debian.sh
+{{   end }}
+{{   if ne .chezmoi.osRelease.id "arch" }}
+.chezmoiscripts/linux/run_once_before_arch.sh
+{{   end }}
 .zshrc
 .p10k.zsh
 {{ end }}
