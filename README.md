@@ -11,7 +11,7 @@ Run the script :
 
 ```sh
 # Linux
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --debug -ad 1 MelvinCou
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init -ad 1 MelvinCou
 # Windows
 winget install -e --accept-source-agreements --accept-package-agreements --scope CurrentUser twpayne.chezmoi
 chezmoi init -ad 1 MelvinCou
