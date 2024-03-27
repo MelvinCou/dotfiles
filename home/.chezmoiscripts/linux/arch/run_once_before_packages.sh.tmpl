@@ -11,7 +11,7 @@ cd $(mktemp -d)
 echo "Installing packages"
 
 # yay
-sudo pacman -S --needed --noconfirm git base-devel
+sudo pacman -Sy --needed --noconfirm git base-devel
 git clone --depth 1 https://aur.archlinux.org/yay-bin.git
 cd yay-bin && makepkg -si --noconfirm
 # rankmirrors
@@ -22,12 +22,8 @@ sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
 
 sudo pacman -Sy --noconfirm
-{{ range .packages.debian.base }}
-sudo pacman -S --needed --noconfirm {{ . }}
-{{ end }}
+sudo pacman -S --needed --noconfirm {{ .packages.arch.pacman | join " " }}
 
 {{ if not .wsl }}
-{{   range .packages.arch.aur }}
-yay -Sa --noconfirm {{ . }}
-{{   end }}
+yay -Sa --noconfirm {{ .packages.arch.aur | join " " }}
 {{ end }}

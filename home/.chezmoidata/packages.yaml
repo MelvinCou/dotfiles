@@ -12,8 +12,19 @@ packages:
       - duf
       - sd
   arch:
+    pacman:
+      - bat
+      - btop
+      - duf
+      - ncdu
+      - neovim
+      - ripgrep
+      - sd
+      - tldr
+      - ttf-hack-nerd
+      - vim
+      - zsh
     aur:
-      - rankmirrors
-      - visual-studio-code-bin
       - brave-bin
-      - ttf-meslo-nerd-font-powerlevel10k
+      - thorium-browser-bin
+      - visual-studio-code-bin
