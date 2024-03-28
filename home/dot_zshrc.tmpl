@@ -33,6 +33,9 @@ compinit
 alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias grep="rgrep -nT --color=auto"
+{{- if lookPath "ag" }}
+alias find=ag
+{{- end }}
 {{- if lookPath "diskus" }}
 alias du=diskus
 {{- else }}

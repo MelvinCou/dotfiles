@@ -4,6 +4,7 @@ packages:
       - bat
       - ncdu
       - ripgrep
+      - silversearcher-ag
       - tldr
       - vim
       - zsh
@@ -20,6 +21,7 @@ packages:
       - ncdu
       - neovim
       - ripgrep
+      - the_silver_searcher
       - sd
       - tldr
       - ttf-hack-nerd
