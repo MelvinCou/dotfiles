@@ -14,6 +14,7 @@ echo "Installing packages"
 sudo pacman -Sy --needed --noconfirm git base-devel
 git clone --depth 1 https://aur.archlinux.org/yay-bin.git
 cd yay-bin && makepkg -si --noconfirm
+yay  -Sa --save --editmenu --sudoloop
 # rankmirrors
 yay -Sa --noconfirm rankmirrors
 # Run pupdaterepos
@@ -21,9 +22,8 @@ sudo curl "https://archlinux.org/mirrorlist/?country=FR&protocol=https&use_mirro
 sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
 
-sudo pacman -Sy --noconfirm
-sudo pacman -S --needed --noconfirm {{ .packages.arch.pacman | join " " }}
+sudo pacman -Sy --needed --noconfirm {{ .packages.arch.pacman | join " " }}
 
 {{ if not .wsl }}
-yay -Sa --noconfirm {{ .packages.arch.aur | join " " }}
+yay -Sa --needed --noconfirm {{ .packages.arch.aur | join " " }}
 {{ end }}

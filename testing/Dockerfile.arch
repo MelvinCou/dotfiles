@@ -3,7 +3,8 @@ FROM archlinux
 RUN pacman -Syq --noconfirm sudo git curl && \
     useradd -m -G wheel arch && \
     passwd -d arch && \
-    sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers
+    sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/g' /etc/sudoers && \
+    sed -i 's/^COMPRESSZST=(zstd -c -T0 --ultra -20 -)/COMPRESSZST=(zstd -c -T0 --ultra -10 -)/g' /etc/makepkg.conf
 
 USER arch
 WORKDIR /home/arch
