@@ -44,7 +44,11 @@ bindkey "\e[3~" delete-char # suppr
 alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias grep="rgrep -nT --color=auto"
+{{- if lookPath "diskus" }}
+alias du=diskus
+{{- else }}
 alias du="du -chd 1"
+{{- end }}
 {{- if lookPath "bat" }}
 alias cat=bat
 {{- else if lookPath "batcat" }}

@@ -15,6 +15,7 @@ packages:
     pacman:
       - bat
       - btop
+      - diskus
       - duf
       - ncdu
       - neovim
