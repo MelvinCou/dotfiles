@@ -1,9 +1,28 @@
 services:
-  debian:
-    build:
-      context: .
-      dockerfile: Dockerfile.debian
   arch:
     build:
       context: .
       dockerfile: Dockerfile.arch
+  debian:
+    build:
+      context: .
+      dockerfile: Dockerfile.debian
+  windows:
+    image: dockurr/windows:2.08
+    environment:
+      CPU_CORES: 2
+      DISK_SIZE: 32G
+      RAM_SIZE: 4G
+      VERSION: win11
+    ports:
+      - 8006:8006
+      - 3389:3389/tcp
+      - 3389:3389/udp
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /var/windows:/storage
+    stop_grace_period: 2m
+    restart: on-failure
