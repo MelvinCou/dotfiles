@@ -15,6 +15,7 @@ sudo pacman -Sy --needed --noconfirm git base-devel
 git clone --depth 1 https://aur.archlinux.org/yay-bin.git
 cd yay-bin && makepkg -si --noconfirm
 yay  -Sa --save --editmenu --sudoloop
+sudo sed -i 's/^COMPRESSZST=(zstd -c -T0 --ultra -20 -)/COMPRESSZST=(zstd -c -T0 --ultra -15 -)/g' /etc/makepkg.conf
 # rankmirrors
 yay -Sa --noconfirm rankmirrors
 # Run pupdaterepos
