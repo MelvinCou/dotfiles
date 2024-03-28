@@ -30,17 +30,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-zstyle ':completion:*:rm:*' ignore-line yes
-zstyle ':completion:*:mv:*' ignore-line yes
-zstyle ':completion:*:cp:*' ignore-line yes
-
-# ctrl + <- | ctrl + ->
-bindkey "^[[1;5D" backward-word
-bindkey "^[[1;5C" forward-word
-bindkey "\e[H" beginning-of-line # Début
-bindkey "\e[F" end-of-line # Fin
-bindkey "\e[3~" delete-char # suppr
-
 alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias grep="rgrep -nT --color=auto"
@@ -54,17 +43,6 @@ alias cat=bat
 {{- else if lookPath "batcat" }}
 alias cat=batcat
 {{- end }}
-
-# docker
-#alias dockerrun="docker run"
-#alias dockerstop="docker stop"
-#alias dockerpull="docker pull"
-
-#alias dockeri="docker image"
-#alias dockerco="docker container"
-#alias dockerc="docker compose"
-
-#alias dockervpurge="docker volume rm $(docker volume ls -qf dangling="true")"
 
 # pacman
 alias pupdate="sudo pacman -Suy"
