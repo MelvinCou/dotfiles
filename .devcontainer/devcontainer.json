@@ -3,7 +3,7 @@
 {
 	"name": "Docker in Docker",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/base:bookworm",
+	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
 
 	"features": {
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
@@ -19,7 +19,9 @@
 				"casualjim.gotemplate"
 			]
 		}
-	}
+	},
+
+	"onCreateCommand": "sudo apt-get update && sudo apt-get install -qqy qemu-kvm libvirt-daemon"
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
