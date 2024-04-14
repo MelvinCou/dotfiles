@@ -1,0 +1,46 @@
+# Do things in tmp
+Set-Location $env:TMP
+
+# Web client used to download files
+$webClient = New-Object System.Net.WebClient
+
+# Install Arch wsl
+{{- if .wsl -}}
+    $archZst = ".\archlinux.tar.zst"
+    $archVer = "20231201.0.196455"
+    $zstd = ".\zstd"
+    $zstdVer = "v1.5.5"
+    $zstdZip = "zstd.zip"
+    # Enable wsl
+    dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+    dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+    wsl --set-default-version 2
+    # Download Arch rootfs
+    $webClient.DownloadFile("https://gitlab.archlinux.org/api/v4/projects/10185/packages/generic/rootfs/$archVer/base-$archVer.tar.zst", $archZst)
+    # zstd needed for decompression
+    $webClient.DownloadFile("https://github.com/facebook/zstd/releases/download/$zstdVer/zstd-$zstdVer-win64.zip", $zstdZip)
+    Expand-Archive -Path $zstdZip -DestinationPath $zstd -Force
+    .\zstd-$zstdVer-win64\zstd.exe -d $archZst -o ".\arch.tar"
+    mkdir -Force "$env:HOME/Archlinux"
+    # Import Arch
+    wsl --import Archlinux "$env:HOME/Archlinux" ".\arch.tar"
+    wsl -d Archlinux
+    # In arch!
+    pacman -Syu --noconfirm
+    pacman -S sudo
+
+    cat <<END >/etc/wsl.conf
+    [boot]
+    systemd=true
+    END
+
+    echo "Creating user"
+    useradd arch -m
+    usermod -aG wheel arch
+    echo "Setting his password"
+    passwd arch
+    su arch
+
+    echo "Running chezmoi... again???"
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- init -ad 1 MelvinCou
+{{- end -}}

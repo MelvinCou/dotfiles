@@ -1,0 +1,12 @@
+# This script uses mostly https://github.com/ChrisTitusTech/powershell-profile/blob/main/setup.ps1
+
+winget install -e --accept-source-agreements --accept-package-agreements --scope user {{ .packages.windows.winget | join " " }}
+
+Install-Module -Repository PSGallery -Scope CurrentUser {{ .packages.windows.ps-modules | join " " }}
+
+# Choco install
+Set-ExecutionPolicy Bypass -Scope Process -Force;
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
+Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+
+choco install {{ .packages.windows.choco | join " " }}
