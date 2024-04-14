@@ -32,17 +32,18 @@ packages:
       - thorium-browser-bin
       - visual-studio-code-bin
   windows:
-    winget:
+    winget_user:
       - GIMP.GIMP
       - JanDeDobbeleer.OhMyPosh
       - LocalSend.LocalSend
-      - mcmilk.7zip-zstd
       - Microsoft.PowerShell
       - Microsoft.PowerToys
       - Microsoft.VisualStudioCode
+      - Ventoy.Ventoy
+    winget_admin:
+      - mcmilk.7zip-zstd
       - Notepad++.Notepad++
       - TheDocumentFoundation.LibreOffice
-      - Ventoy.Ventoy
       - VideoLAN.VLC
     choco:
       - nerd-fonts-Hack
