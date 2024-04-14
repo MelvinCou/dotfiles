@@ -31,3 +31,20 @@ packages:
       - brave-bin
       - thorium-browser-bin
       - visual-studio-code-bin
+  windows:
+    winget:
+      - GIMP.GIMP
+      - JanDeDobbeleer.OhMyPosh
+      - LocalSend.LocalSend
+      - mcmilk.7zip-zstd
+      - Microsoft.PowerShell
+      - Microsoft.PowerToys
+      - Microsoft.VisualStudioCode
+      - Notepad++.Notepad++
+      - TheDocumentFoundation.LibreOffice
+      - Ventoy.Ventoy
+      - VideoLAN.VLC
+    choco:
+      - nerd-fonts-Hack
+    ps-modules:
+      - Terminal-Icons
