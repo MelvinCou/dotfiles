@@ -1,6 +1,7 @@
 # This script uses mostly https://github.com/ChrisTitusTech/powershell-profile/blob/main/setup.ps1
 
-winget install -e --accept-source-agreements --accept-package-agreements --scope user {{ .packages.windows.winget | join " " }}
+winget upgrade
+winget install --accept-source-agreements --accept-package-agreements --scope user {{ .packages.windows.winget | join " " }}
 
 Install-Module -Repository PSGallery -Scope CurrentUser {{ .packages.windows.ps_modules | join " " }}
 
