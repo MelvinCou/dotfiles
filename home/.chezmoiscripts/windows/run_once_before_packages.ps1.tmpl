@@ -2,7 +2,7 @@
 
 winget install -e --accept-source-agreements --accept-package-agreements --scope user {{ .packages.windows.winget | join " " }}
 
-Install-Module -Repository PSGallery -Scope CurrentUser {{ .packages.windows.ps-modules | join " " }}
+Install-Module -Repository PSGallery -Scope CurrentUser {{ .packages.windows.ps_modules | join " " }}
 
 # Choco install
 Set-ExecutionPolicy Bypass -Scope Process -Force;
