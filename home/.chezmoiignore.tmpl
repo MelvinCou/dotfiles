@@ -1,17 +1,17 @@
-{{ if ne .chezmoi.os "linux" }}
+{{- if ne .chezmoi.os "linux" }}
 .chezmoiscripts/linux/**
 .zshrc
 .p10k.zsh
-{{ else }}
-{{   if not (eq .chezmoi.osRelease.id "debian" "ubuntu") }}
+{{- else }}
+{{-   if not .debian }}
 .chezmoiscripts/linux/debian/**
-{{   end }}
-{{   if ne .chezmoi.osRelease.id "arch" }}
+{{-   end }}
+{{-   if ne .chezmoi.osRelease.id "arch" }}
 .chezmoiscripts/linux/arch/**
-{{   end }}
-{{ end }}
+{{-   end }}
+{{- end }}
 
 {{ if ne .chezmoi.os "windows" }}
 .chezmoiscripts/windows/**
 Documents/**
-{{ end }}
+{{- end }}

@@ -7,7 +7,7 @@
 {{- end -}}
 
 {{- if eq .chezmoi.os "linux" -}}
-    {{- $debian:= eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
+    {{- $debian = eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
     {{- if $debian -}}
         {{- writeToStdout "💡 Script launched in Debian\n" -}}
     {{- end -}}
