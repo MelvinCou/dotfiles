@@ -12,3 +12,6 @@ Set-ExecutionPolicy Bypass -Scope Process -Force;
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 choco install {{ .packages.windows.choco | join " " }}
+
+# Add extra space for explorer path in posh theme
+sed $env:POSH_THEMES_PATH\powerlevel10k_rainbow.omp.json '"template": " \uf07c {{ .Path }} "' '"template": " \uf07c  {{ .Path }} "'
