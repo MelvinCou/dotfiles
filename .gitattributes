@@ -1,0 +1,3 @@
+*.toml.tmpl linguist-language=toml
+*.*sh.tmpl linguist-language=bash
+*.ps1.tmpl linguist-language=powershell
