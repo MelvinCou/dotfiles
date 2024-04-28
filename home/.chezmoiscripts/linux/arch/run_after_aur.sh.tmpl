@@ -1,0 +1,6 @@
+#!{{ lookPath "sh" }}
+set -eu
+
+{{- if not .wsl }}
+yay -Sa --needed --noconfirm {{ .packages.arch.aur | join " " }}
+{{- end }}

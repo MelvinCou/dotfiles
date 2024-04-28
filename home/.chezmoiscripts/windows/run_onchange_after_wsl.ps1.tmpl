@@ -5,7 +5,7 @@ Set-Location $env:TMP
 $webClient = New-Object System.Net.WebClient
 
 # Install Arch wsl
-{{- if .wsl -}}
+{{- if .wsl }}
     $archZst = ".\archlinux.tar.zst"
     $archVer = "20231201.0.196455"
     $zstd = ".\zstd"
@@ -43,4 +43,4 @@ $webClient = New-Object System.Net.WebClient
 
     echo "Running chezmoi... again???"
     sh -c "$(curl -fsLS get.chezmoi.io)" -- init -ad 1 MelvinCou
-{{- end -}}
+{{- end }}

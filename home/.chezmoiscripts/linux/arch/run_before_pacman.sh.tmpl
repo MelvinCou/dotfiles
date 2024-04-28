@@ -1,10 +1,10 @@
 #!{{ lookPath "sh" }}
 set -eu
 
-{{ if .wsl }}
+{{- if .wsl }}
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
-{{ end }}
+{{- end }}
 
 # Work in temp folder
 cd $(mktemp -d)
@@ -23,7 +23,3 @@ sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
 
 sudo pacman -Sy --needed --noconfirm {{ .packages.arch.pacman | join " " }}
-
-{{ if not .wsl }}
-yay -Sa --needed --noconfirm {{ .packages.arch.aur | join " " }}
-{{ end }}
