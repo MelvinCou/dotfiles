@@ -7,3 +7,5 @@
         rebase = true
 [rebase]
         autoStash = true
+[alias]
+	pruneAll = !git remote prune origin && git reflog expire --all --expire=now && git gc --prune=now --aggressive
