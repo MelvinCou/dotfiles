@@ -42,9 +42,11 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-alias grep="rgrep -nT --color=auto"
 {{- if lookPath "ag" }}
 alias find=ag
+{{- end }}
+{{- if lookPath "rg" }}
+alias grep=rg
 {{- end }}
 {{- if lookPath "diskus" }}
 alias du=diskus
