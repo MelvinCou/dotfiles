@@ -5,13 +5,13 @@
 .chezmoiscripts/linux/**
 .zshrc
 .p10k.zsh
+.config/**
 {{- else }}
 {{-   if not .debian }}
 .chezmoiscripts/linux/debian/**
 {{-   end }}
 {{-   if ne .chezmoi.osRelease.id "arch" }}
 .chezmoiscripts/linux/arch/**
-.config/pacman/makepkg.conf
 {{-   end }}
 {{- end }}
 
