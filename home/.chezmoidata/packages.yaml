@@ -49,3 +49,9 @@ packages:
       - nerd-fonts-Hack
     ps_modules:
       - Terminal-Icons
+  vscode:
+    - GitHub.codespaces
+    - GitHub.vscode-github-actions
+    - GitHub.vscode-pull-request-github
+    - PKief.material-icon-theme
+    - ms-vscode-remote.remote-containers
