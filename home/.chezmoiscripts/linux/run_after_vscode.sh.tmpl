@@ -1,7 +1,7 @@
 #!{{ lookPath "sh" }}
 set -eu
 
-{{- if lookPath "code" }}
+{{- if and (lookPath "code") (not .codespaces) }}
 echo "Installing Visual studio code extensions"
 {{-   range .packages.vscode }}
 code --install-extension {{ . | quote }} 1>/dev/null
