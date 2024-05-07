@@ -3,3 +3,8 @@ set -eu
 
 echo "Changing shell to zsh"
 sudo chsh -s $(which zsh) $(whoami)
+
+{{- if lookPath "fc-cache" }}
+echo "Updating font cache"
+fc-cache -f
+{{- end }}

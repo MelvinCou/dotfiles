@@ -24,7 +24,6 @@ packages:
       - the_silver_searcher
       - sd
       - tldr
-      - ttf-hack-nerd
       - vim
       - zsh
     aur:
