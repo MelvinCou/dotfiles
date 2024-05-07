@@ -21,5 +21,3 @@ yay -Sa --needed --noconfirm rankmirrors
 sudo curl "https://archlinux.org/mirrorlist/?country=FR&protocol=https&use_mirror_status=on" | sudo tee /etc/pacman.d/mirrorlist.backup
 sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
 rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
-
-sudo pacman -Sy --needed --noconfirm {{ .packages.arch.pacman | join " " }}

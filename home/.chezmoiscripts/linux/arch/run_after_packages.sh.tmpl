@@ -1,6 +1,8 @@
 #!{{ lookPath "sh" }}
 set -eu
 
+sudo pacman -Sy --needed --noconfirm {{ .packages.arch.pacman | join " " }}
+
 {{- if not .wsl }}
 yay -Sa --needed --noconfirm {{ .packages.arch.aur | join " " }}
 {{- end }}
