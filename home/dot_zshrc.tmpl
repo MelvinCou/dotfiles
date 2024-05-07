@@ -14,7 +14,9 @@ fpath=($ZSH/custom/plugins/zsh-completions/src $fpath)
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
-# Oh My Zsh plugins
+# Disable oh-my-zsh auto updates
+DISABLE_AUTO_UPDATE="true"
+# oh-my-zsh plugins
 plugins=(
 {{- if lookPath "git" }}
   git-commit git-extras
