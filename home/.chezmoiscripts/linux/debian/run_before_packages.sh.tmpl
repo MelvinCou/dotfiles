@@ -3,8 +3,7 @@ set -eu
 
 echo "Installing packages"
 sudo apt-get update -qqy
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommends {{ .packages.debian.base | join " " }}
+sudo apt-get install -qqqy --no-install-recommends {{ .packages.debian.base | join " " }}
 
-{{- if not .codespaces }}
-DEBIAN_FRONTEND=noninteractive sudo apt-get install -qqqy --no-install-recommends {{ .packages.debian.others | join " " }}
-{{- end }}
+# Those packages may not be available depending of distro variant
+sudo apt-get install -qqqy --no-install-recommends {{ .packages.debian.others | join " " }} || true

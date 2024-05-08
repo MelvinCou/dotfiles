@@ -1,8 +1,10 @@
 #!{{ lookPath "sh" }}
 set -eu
 
+{{- if lookPath "zsh" }}
 echo "Changing shell to zsh"
 sudo chsh -s $(which zsh) $(whoami)
+{{- end }}
 
 {{- if lookPath "fc-cache" }}
 echo "Updating font cache"
