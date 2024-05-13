@@ -62,11 +62,9 @@ alias cat=batcat
 {{- end }}
 
 # pacman
-alias pupdate="sudo pacman -Suy"
 alias pinst="sudo pacman -S"
 alias premove="sudo pacman -Rucn"
 alias premovedepth="pacman -Qtdq | sudo pacman -Rns -"
-alias psearch="pacman -Ss $1 | grep $1"
 
 func pupdaterepos() {
         sudo curl "https://archlinux.org/mirrorlist/?country=FR&protocol=https&use_mirror_status=on" | sudo tee /etc/pacman.d/mirrorlist.backup
@@ -75,6 +73,9 @@ func pupdaterepos() {
 }
 
 source $ZSH/oh-my-zsh.sh
+# Apply locale
+unset LANG
+source /etc/profile.d/locale.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
