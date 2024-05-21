@@ -56,9 +56,9 @@ alias du=diskus
 alias du="du -chd 1"
 {{- end }}
 {{- if lookPath "bat" }}
-alias cat=bat -pp
+alias cat="bat -pp"
 {{- else if lookPath "batcat" }}
-alias cat=batcat
+alias cat="batcat -pp"
 {{- end }}
 
 # pacman
