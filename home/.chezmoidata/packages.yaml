@@ -1,17 +1,16 @@
 packages:
   debian:
-    base:
+    apt:
       - bat
+      - btop
+      - duf
       - ncdu
       - ripgrep
+      - sd
       - silversearcher-ag
       - tldr
       - vim
       - zsh
-    others:
-      - btop
-      - duf
-      - sd
   arch:
     pacman:
       - bat

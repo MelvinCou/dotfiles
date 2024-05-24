@@ -73,8 +73,8 @@ func pupdaterepos() {
 }
 
 source $ZSH/oh-my-zsh.sh
-# Apply locale
 {{- if not .codespaces }}
+# Apply locale
 unset LANG
 source /etc/profile.d/locale.sh
 {{- end }}

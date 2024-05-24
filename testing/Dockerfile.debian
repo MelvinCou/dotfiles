@@ -1,7 +1,7 @@
 FROM debian
 
 RUN apt-get update -qqy && \
-    apt-get install --no-install-recommends -qqy curl fontconfig git sudo unzip && \
+    apt-get install --no-install-recommends -qqy curl fontconfig sudo && \
     useradd -m -G sudo debian && \
     passwd -d debian && \
     # curl: (77) error setting certificate file: /etc/ssl/certs/ca-certificates.crt
