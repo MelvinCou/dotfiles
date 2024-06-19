@@ -1,11 +1,13 @@
 # This is Git's per-user configuration file.
 [user]
 # Please adapt and uncomment the following lines:
-#       name = MelvinCou
-#       email = 113338357+MelvinCou@users.noreply.github.com
+# name = MelvinCou
+# email = 113338357+MelvinCou@users.noreply.github.com
 [pull]
-        rebase = true
+  rebase = true
 [rebase]
-        autoStash = true
+  autoStash = true
+[pager]
+  branch = false
 [alias]
 	pruneAll = !git remote prune origin && git reflog expire --all --expire=now && git gc --prune=now --aggressive

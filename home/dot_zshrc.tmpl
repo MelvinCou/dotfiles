@@ -44,6 +44,15 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+{{- if lookPath "most" }}
+export PAGER=most
+{{- end }}
+{{- if lookPath "nvim" }}
+export EDITOR=nvim
+{{- else }}
+export EDITOR=vim
+{{- end }}
+
 {{- if lookPath "ag" }}
 alias find=ag
 {{- end }}
@@ -67,9 +76,9 @@ alias premove="sudo pacman -Rucn"
 alias premovedepth="pacman -Qtdq | sudo pacman -Rns -"
 
 func pupdaterepos() {
-        sudo curl "https://archlinux.org/mirrorlist/?country=FR&protocol=https&use_mirror_status=on" | sudo tee /etc/pacman.d/mirrorlist.backup
-        sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
-        rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
+  sudo curl "https://archlinux.org/mirrorlist/?country=FR&protocol=https&use_mirror_status=on" | sudo tee /etc/pacman.d/mirrorlist.backup
+  sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+  rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
 }
 
 source $ZSH/oh-my-zsh.sh

@@ -5,6 +5,7 @@ packages:
       - btop
       - duf
       - git-extras
+      - most
       - ncdu
       - ripgrep
       - sd
@@ -18,6 +19,7 @@ packages:
       - btop
       - diskus
       - duf
+      - most
       - ncdu
       - neovim
       - ripgrep
