@@ -5,6 +5,7 @@ packages:
       - btop
       - duf
       - git-extras
+      - lsd
       - most
       - ncdu
       - ripgrep
@@ -19,6 +20,8 @@ packages:
       - btop
       - diskus
       - duf
+      - glow
+      - lsd
       - most
       - ncdu
       - neovim
@@ -31,6 +34,7 @@ packages:
     aur:
       - brave-bin
       - git-extras
+      - howdoi
       - thorium-browser-bin
       - visual-studio-code-bin
   windows:

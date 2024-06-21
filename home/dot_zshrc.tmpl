@@ -69,9 +69,13 @@ alias cat="bat -pp"
 {{- else if lookPath "batcat" }}
 alias cat="batcat -pp"
 {{- end }}
+{{- if lookPath "lsd" }}
+DISABLE_LS_COLORS=true
+alias ls=lsd
+alias ll="lsd -l"
+{{- end }}
 
 # pacman
-alias pinst="sudo pacman -S"
 alias premove="sudo pacman -Rucn"
 alias premovedepth="pacman -Qtdq | sudo pacman -Rns -"
 

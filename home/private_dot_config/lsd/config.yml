@@ -1,0 +1,15 @@
+classic: false
+blocks:
+  - permission
+  - user
+  - group
+  - git
+  - size
+  - date
+  - name
+color:
+  when: auto
+  theme: default
+date: +%Hh%M %_d %b
+dereference: false
+size: short
