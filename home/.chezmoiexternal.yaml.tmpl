@@ -4,12 +4,15 @@
   type: git-repo
   url: https://github.com/NvChad/starter.git
   refreshPeriod: 168h
+  clone:
+    args:
+      - "--filter=tree:0"
 {{-     if not .wsl }}
 .local/share/fonts/hack:
   type: archive
   url: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.tar.xz
   exact: true
-  refreshPeriod: 168h
+  refreshPeriod: 672h
 {{-     end }}
 {{-   end }}
 .oh-my-zsh:
@@ -17,17 +20,17 @@
   url: https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz
   exact: true
   stripComponents: 1
-  refreshPeriod: 168h
+  refreshPeriod: 336h
 .oh-my-zsh/custom/plugins/zsh-completions:
   type: archive
   url: https://github.com/zsh-users/zsh-completions/archive/master.tar.gz
   exact: true
   stripComponents: 1
-  refreshPeriod: 168h
+  refreshPeriod: 504h
 .oh-my-zsh/custom/themes/powerlevel10k:
   type: archive
   url: https://github.com/romkatv/powerlevel10k/archive/master.tar.gz
   exact: true
   stripComponents: 1
-  refreshPeriod: 168h
+  refreshPeriod: 504h
 {{- end }}

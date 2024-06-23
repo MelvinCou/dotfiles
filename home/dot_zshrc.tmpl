@@ -45,7 +45,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-{{ if lookPath "most" }}
+{{ if lookPath "most" -}}
 export PAGER=most
 {{- end }}
 {{- if lookPath "nvim" }}
@@ -54,7 +54,7 @@ export EDITOR=nvim
 export EDITOR=vim
 {{- end }}
 
-{{ if lookPath "ag" }}
+{{ if lookPath "ag" -}}
 alias find=ag
 {{- end }}
 {{- if lookPath "rg" }}
@@ -76,8 +76,7 @@ alias ls=lsd
 alias ll="lsd -l"
 {{- end }}
 
-
-{{ if lookPath "howdoi" }}
+{{ if lookPath "howdoi" -}}
 # howdoi
 export HOWDOI_COLORIZE=1
 export HOWDOI_SEARCH_ENGINE=duckduckgo
