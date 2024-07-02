@@ -1,11 +1,12 @@
 # This is Git's per-user configuration file.
 [user]
-# Please adapt and uncomment the following lines:
-# name = MelvinCou
-# email = 113338357+MelvinCou@users.noreply.github.com
+  name = {{ output "git" "config" "user.name" }}  email = {{ output "git" "config" "user.email" -}}
 [pull]
   rebase = true
+[push]
+  autoSetupRemote = true
 [rebase]
+  abbreviateCommands = true
   autoStash = true
 [pager]
   branch = false
