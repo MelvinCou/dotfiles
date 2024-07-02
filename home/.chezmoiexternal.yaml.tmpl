@@ -6,7 +6,11 @@
   refreshPeriod: 168h
   clone:
     args:
-      - "--filter=tree:0"
+      - --quiet
+      - --filter=tree:0
+  pull:
+    args:
+      - --quiet
 {{-     if not .wsl }}
 .local/share/fonts/hack:
   type: archive

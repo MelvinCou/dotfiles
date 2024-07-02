@@ -1,0 +1,16 @@
+# This is Git's per-user configuration file.
+[user]
+  name = {{ output "git" "config" "--default=" "user.name" }}  email = {{ output "git" "config" "--default=" "user.email" -}}
+[fetch]
+  prune = true
+[pager]
+  branch = false
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+[rebase]
+  abbreviateCommands = true
+  autoStash = true
+[alias]
+  pruneAll = !git remote prune origin && git reflog expire --all --expire=now && git gc --prune=now --aggressive
