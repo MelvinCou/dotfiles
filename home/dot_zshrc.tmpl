@@ -73,7 +73,9 @@ alias cat="batcat -pp"
 {{- if lookPath "lsd" }}
 DISABLE_LS_COLORS=true
 alias ls=lsd
+alias l="lsd -lA"
 alias ll="lsd -l"
+alias tree="lsd --tree"
 {{- end }}
 
 {{ if lookPath "howdoi" -}}
