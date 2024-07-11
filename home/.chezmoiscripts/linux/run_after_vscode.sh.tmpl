@@ -3,8 +3,13 @@ set -eu
 
 {{- if and (lookPath "code") (not .codespaces) }}
 echo "Installing Visual studio code extensions"
-{{-   range .packages.vscode }}
-code --install-extension {{ . | quote }} 1>/dev/null
-{{-   end }}
+
 code --update-extensions 1>/dev/null
+extensions=$(code --list-extensions)
+{{-   range .packages.vscode }}
+if [[ $extensions != *{{ . }}* ]]; then
+    echo "Installing {{ . }}"
+    code --install-extension {{ . | quote }} 1>/dev/null
+fi
+{{-   end }}
 {{- end }}

@@ -56,8 +56,8 @@ packages:
     ps_modules:
       - Terminal-Icons
   vscode:
-    - GitHub.codespaces
-    - GitHub.vscode-github-actions
-    - GitHub.vscode-pull-request-github
-    - PKief.material-icon-theme
+    - github.codespaces
+    - github.vscode-github-actions
+    - github.vscode-pull-request-github
+    - pkief.material-icon-theme
     - ms-vscode-remote.remote-containers
