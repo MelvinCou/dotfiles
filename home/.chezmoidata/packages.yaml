@@ -20,6 +20,7 @@ packages:
       - btop
       - diskus
       - duf
+      - ghostty
       - glow
       - lsd
       - most
@@ -34,7 +35,6 @@ packages:
     aur:
       - brave-bin
       - git-extras
-      - howdoi
       - thorium-browser-bin
       - visual-studio-code-bin
   windows:
