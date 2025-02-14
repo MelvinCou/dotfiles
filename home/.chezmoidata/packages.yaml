@@ -18,8 +18,8 @@ packages:
     pacman:
       - bat
       - btop
-      - diskus
       - duf
+      - git-delta
       - ghostty
       - glow
       - lsd

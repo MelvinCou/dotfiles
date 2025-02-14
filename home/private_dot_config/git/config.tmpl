@@ -1,6 +1,17 @@
 # This is Git's per-user configuration file.
 [user]
   name = {{ output "git" "config" "--default=" "user.name" }}  email = {{ output "git" "config" "--default=" "user.email" -}}
+{{ if lookPath "delta" -}}
+[core]
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  line-numbers = true
+  navigate = true  # use n and N to move between diff sections
+[merge]
+  conflictstyle = zdiff3
+{{ end -}}
 [fetch]
   prune = true
 [pager]
