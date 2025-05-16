@@ -5,5 +5,4 @@ font-family-bold = Hack Nerd Font Mono Bold
 font-family-italic = Hack Nerd Font Mono Italic
 font-family-bold-italic = Hack Nerd Font Mono Bold Italic
 
-window-height = 35
-window-width = 120
+maximize = true
