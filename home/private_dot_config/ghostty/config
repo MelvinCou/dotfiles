@@ -1,5 +1,6 @@
 confirm-close-surface = false
 
+theme = catppuccin-mocha
 font-family = Hack Nerd Font Mono
 font-family-bold = Hack Nerd Font Mono Bold
 font-family-italic = Hack Nerd Font Mono Italic
