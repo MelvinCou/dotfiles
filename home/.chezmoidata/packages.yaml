@@ -35,7 +35,6 @@ packages:
     aur:
       - brave-bin
       - git-extras
-      - thorium-browser-bin
       - visual-studio-code-bin
   windows:
     winget_user:
