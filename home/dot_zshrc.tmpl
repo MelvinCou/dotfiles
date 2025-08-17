@@ -39,7 +39,9 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename ~/.zshrc
 
+{{ if stat (joinPath (env "XDG_RUNTIME_DIR") "ssh-agent.socket") -}}
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+{{- end }}
 
 autoload -Uz compinit
 compinit
@@ -78,8 +80,9 @@ alias tree="lsd --tree"
 # howdoi
 export HOWDOI_COLORIZE=1
 export HOWDOI_SEARCH_ENGINE=duckduckgo
-{{- end }}
+{{ end -}}
 
+{{ if eq .chezmoi.osRelease.id "arch" -}}
 # pacman
 alias premove="sudo pacman -Rucn"
 alias premovedepth="pacman -Qtdq | sudo pacman -Rns -"
@@ -89,10 +92,11 @@ func pupdaterepos() {
   sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
   rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist
 }
+{{- end }}
 
 source $ZSH/oh-my-zsh.sh
 
-{{- if not .codespaces }}
+{{ if stat "/etc/profile.d/locale.sh" -}}
 # Apply locale
 unset LANG
 source /etc/profile.d/locale.sh
