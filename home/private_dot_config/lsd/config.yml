@@ -9,7 +9,7 @@ blocks:
   - name
 color:
   when: auto
-  theme: default
+  theme: custom
 date: +%Hh%M %_d %b
 dereference: false
 size: short
