@@ -1,0 +1,9 @@
+{
+    "[yaml]": {
+        "editor.tabSize": 2
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "Hack Nerd Font Mono",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha"
+}
