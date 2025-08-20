@@ -38,22 +38,23 @@ packages:
       - visual-studio-code-bin
   windows:
     winget_user:
-      - GIMP.GIMP
-      - JanDeDobbeleer.OhMyPosh
+      - GIMP.GIMP.3
+      - Git.Git
       - LocalSend.LocalSend
       - Microsoft.PowerShell
       - Microsoft.PowerToys
       - Microsoft.VisualStudioCode
+      - Nushell.Nushell
       - Ventoy.Ventoy
     winget_admin:
+      - JanDeDobbeleer.OhMyPosh
       - mcmilk.7zip-zstd
       - Notepad++.Notepad++
-      - TheDocumentFoundation.LibreOffice
+      - Starship.Starship
+      - ONLYOFFICE.DesktoEditors
       - VideoLAN.VLC
     choco:
       - nerd-fonts-Hack
-    ps_modules:
-      - Terminal-Icons
   vscode:
     - catppuccin.catppuccin-vsc
     - catppuccin.catppuccin-vsc-icons
