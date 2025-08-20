@@ -7,11 +7,10 @@ winget install --id --accept-source-agreements --accept-package-agreements {{ .p
 Install-Module -Repository PSGallery -Scope CurrentUser {{ .packages.windows.ps_modules | join " " }}
 
 # Choco install
+{{- if lookPath "choco" }}
 Set-ExecutionPolicy Bypass -Scope Process -Force;
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072;
 Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
 choco install {{ .packages.windows.choco | join " " }}
-
-# Add extra space for explorer path in posh theme
-sed $env:POSH_THEMES_PATH\powerlevel10k_rainbow.omp.json '"template": " \uf07c {{ .Path }} "' '"template": " \uf07c  {{ .Path }} "'
+{{- end }}

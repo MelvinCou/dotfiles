@@ -1,11 +1,11 @@
-# Do things in tmp
-Set-Location $env:TMP
-
-# Web client used to download files
-$webClient = New-Object System.Net.WebClient
-
 # Install Arch wsl
 {{- if .wsl }}
+    # Do things in tmp
+    Set-Location $env:TMP
+
+    # Web client used to download files
+    $webClient = New-Object System.Net.WebClient
+
     $archZst = ".\archlinux.tar.zst"
     $archVer = "20231201.0.196455"
     $zstd = ".\zstd"
