@@ -38,3 +38,14 @@
   stripComponents: 1
   refreshPeriod: 504h
 {{- end }}
+.config/nushell/nu_scripts:
+  type: git-repo
+  url: https://github.com/nushell/nu_scripts.git
+  refreshPeriod: 168h
+  clone:
+    args:
+      - --quiet
+      - --filter=tree:0
+  pull:
+    args:
+      - --quiet

@@ -17,6 +17,8 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
+source completion.nu
+
 # ----------------------
 # Miscellaneous Settings
 # ----------------------
