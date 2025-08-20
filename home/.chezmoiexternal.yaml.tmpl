@@ -38,7 +38,11 @@
   stripComponents: 1
   refreshPeriod: 504h
 {{- end }}
+{{- if eq .chezmoi.os "linux" }}
 .config/nushell/nu_scripts:
+{{- else }}
+AppData/Roaming/nushell/nu_scripts:
+{{- end }}
   type: git-repo
   url: https://github.com/nushell/nu_scripts.git
   refreshPeriod: 168h
