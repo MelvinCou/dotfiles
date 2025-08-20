@@ -13,9 +13,6 @@
 ### This is the default policy on Windows Server 2012 R2 and above for server Windows. For 
 ### more information about execution policies, run Get-Help about_Execution_Policies.
 
-# Import Terminal Icons
-Import-Module -Name Terminal-Icons
-
 $ProgressPreference = 'SilentlyContinue'
 
 # If so and the current host is a command line, then change to red color 
@@ -116,7 +113,7 @@ function pgrep($name) {
 }
 
 ## Final Line to set prompt
-oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\powerlevel10k_rainbow.omp.json | Invoke-Expression
+Invoke-Expression (&starship init powershell)
 
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
