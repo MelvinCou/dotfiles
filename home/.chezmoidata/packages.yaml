@@ -41,17 +41,16 @@ packages:
       - GIMP.GIMP.3
       - Git.Git
       - LocalSend.LocalSend
-      - Microsoft.PowerShell
       - Microsoft.PowerToys
       - Microsoft.VisualStudioCode
       - Nushell.Nushell
       - Ventoy.Ventoy
     winget_admin:
+      - 7zip.7zip
       - JanDeDobbeleer.OhMyPosh
-      - mcmilk.7zip-zstd
       - Notepad++.Notepad++
       - Starship.Starship
-      - ONLYOFFICE.DesktoEditors
+      - ONLYOFFICE.DesktopEditors
       - VideoLAN.VLC
     choco:
       - nerd-fonts-Hack

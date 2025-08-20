@@ -1,8 +1,18 @@
 # This script uses mostly https://github.com/ChrisTitusTech/powershell-profile/blob/main/setup.ps1
 
-winget upgrade
-winget install --accept-source-agreements --accept-package-agreements --scope user "{{ .packages.windows.winget_user | join "\" \"" }}"
-winget install --accept-source-agreements --accept-package-agreements "{{ .packages.windows.winget_admin | join "\" \"" }}"
+$packages = $(winget list) | Out-String
+{{- range .packages.windows.winget_user }}
+if (!$packages.Contains({{ . | quote }})) {
+    echo "Installing {{ . }}"
+    winget install --accept-source-agreements --accept-package-agreements --scope user --id {{ . | quote }}
+}
+{{- end }}
+{{- range .packages.windows.winget_admin }}
+if (!$packages.Contains({{ . | quote }})) {
+    echo "Installing {{ . }}"
+    winget install --accept-source-agreements --accept-package-agreements --id {{ . | quote }}
+}
+{{- end }}
 
 {{- if not (lookPath "choco") }}
 # Choco install
