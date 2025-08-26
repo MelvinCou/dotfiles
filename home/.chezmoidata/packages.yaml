@@ -54,6 +54,9 @@ packages:
       - VideoLAN.VLC
     choco:
       - nerd-fonts-Hack
+    registry:
+      HKCU:Control Panel/Desktop/MenuShowDelay: 200
+      HKCU:Control Panel/Keyboard/InitialKeyboardIndicators: 2
   vscode:
     - catppuccin.catppuccin-vsc
     - catppuccin.catppuccin-vsc-icons

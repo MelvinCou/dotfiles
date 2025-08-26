@@ -1,0 +1,9 @@
+{{- range $key, $val := .packages.windows.registry -}}
+{{- $path := $key | dir -}}
+{{- $name := $key | base }}
+if(Get-ItemProperty -ErrorAction SilentlyContinue -Path {{ $path | quote }} -Name {{ $name | quote }}) {
+	Set-ItemProperty -Path {{ $path | quote }} -Name {{ $name | quote }} -Value {{ $val | quote }}
+} else {
+	New-ItemProperty -Path {{ $path | quote }} -Name {{ $name | quote }} -Value {{ $val | quote }} -PropertyType "String"
+}
+{{- end }}
