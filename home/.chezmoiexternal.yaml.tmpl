@@ -14,9 +14,8 @@
 {{-     if not .wsl }}
 .local/share/fonts/hack:
   type: archive
-  url: https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.tar.xz
+  url: {{ gitHubLatestReleaseAssetURL "ryanoasis/nerd-fonts" "Hack.tar.xz" }}
   exact: true
-  refreshPeriod: 672h
 {{-     end }}
 {{-   end }}
 .oh-my-zsh:
