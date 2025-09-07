@@ -48,13 +48,3 @@ vim
 notepad
 {{- end -}}
 "
-
-# ---------------------------
-# Other
-# ---------------------------
-
-source .zoxide.nu
-source .carapace.nu
-{{- if lookPath "winget" }}
-source .winget.nu
-{{- end }}
