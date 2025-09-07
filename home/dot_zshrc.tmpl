@@ -82,6 +82,8 @@ export HOWDOI_COLORIZE=1
 export HOWDOI_SEARCH_ENGINE=duckduckgo
 {{ end -}}
 
+eval "$(zoxide init zsh)"
+
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 # pacman
 alias premove="sudo pacman -Rucn"

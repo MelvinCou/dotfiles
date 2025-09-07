@@ -30,3 +30,8 @@ data:
   wsl: {{ $wsl }}
 scriptEnv:
   DEBIAN_FRONTEND: noninteractive
+{{- if eq .chezmoi.os "windows" }}
+cd:
+  command: nu
+useBuiltinGit: true
+{{- end -}}

@@ -8,11 +8,9 @@ packages:
       - lsd
       - most
       - ncdu
-      - ripgrep
-      - sd
-      - silversearcher-ag
       - tldr
       - vim
+      - zoxide
       - zsh
   arch:
     pacman:
@@ -26,11 +24,9 @@ packages:
       - most
       - ncdu
       - neovim
-      - ripgrep
-      - the_silver_searcher
-      - sd
       - tldr
       - vim
+      - zoxide
       - zsh
     aur:
       - brave-bin
@@ -38,16 +34,17 @@ packages:
       - visual-studio-code-bin
   windows:
     winget_user:
+      - ajeetdsouza.zoxide
       - GIMP.GIMP.3
       - Git.Git
       - LocalSend.LocalSend
       - Microsoft.PowerToys
       - Microsoft.VisualStudioCode
       - Nushell.Nushell
+      - rsteube.Carapace
       - Ventoy.Ventoy
     winget_admin:
       - 7zip.7zip
-      - JanDeDobbeleer.OhMyPosh
       - Notepad++.Notepad++
       - Starship.Starship
       - ONLYOFFICE.DesktopEditors

@@ -17,8 +17,6 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
-source completion.nu
-
 # ----------------------
 # Miscellaneous Settings
 # ----------------------
@@ -35,3 +33,24 @@ $env.config.show_banner = false
 
 # edit_mode (string) "vi" or "emacs" sets the editing behavior of Reedline
 $env.config.edit_mode = "vi"
+
+# Command that will be used to edit the current line buffer with Ctrl+O.
+# If unset, uses $env.VISUAL and then $env.EDITOR
+#
+# Tip: Set to "editor" to use the default editor on Unix platforms using
+#      the Alternatives system or equivalent
+$env.config.buffer_editor = "
+{{- if lookPath "nvim" -}}
+nvim
+{{- else if lookPath "vim" -}}
+vim
+{{- else if lookPath "notepad" -}}
+notepad
+{{- end -}}
+"
+
+# ---------------------------
+# Other
+# ---------------------------
+
+source .zoxide.nu
