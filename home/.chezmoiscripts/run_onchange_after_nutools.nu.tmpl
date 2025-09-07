@@ -4,4 +4,8 @@
 zoxide init nushell | save -f ($nu.default-config-dir | path join .zoxide.nu)
 
 carapace _carapace nushell | save -f ($nu.default-config-dir | path join .carapace.nu)
+
+{{- if lookPath "winget" }}
+http get {{ getRedirectedURL "https://github.com/nushell/nu_scripts/raw/HEAD/custom-completions/winget/winget-completions.nu" }} | save -f ($nu.default-config-dir | path join .winget.nu)
+{{- end }}
 {{- end -}}
