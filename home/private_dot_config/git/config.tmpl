@@ -1,30 +1,30 @@
 # This is Git's per-user configuration file.
 [user]
-  name = {{ output "git" "config" "--default=" "user.name" }}  email = {{ output "git" "config" "--default=" "user.email" -}}
+	name = {{ output "git" "config" "--default=" "user.name" }}	email = {{ output "git" "config" "--default=" "user.email" -}}
 {{ if lookPath "delta" -}}
 [include]
-  path = catppuccin.gitconfig
+	path = catppuccin.gitconfig
 [core]
-  pager = delta
+	pager = delta
 [interactive]
-  diffFilter = delta --color-only
+	diffFilter = delta --color-only
 [delta]
-  line-numbers = true
-  navigate = true  # use n and N to move between diff sections
-  features = catppuccin-mocha
+	line-numbers = true
+	navigate = true  # use n and N to move between diff sections
+	features = catppuccin-mocha
 [merge]
-  conflictstyle = zdiff3
+	conflictstyle = zdiff3
 {{ end -}}
 [fetch]
-  prune = true
+	prune = true
 [pager]
-  branch = false
+	branch = false
 [pull]
-  rebase = true
+	rebase = true
 [push]
-  autoSetupRemote = true
+	autoSetupRemote = true
 [rebase]
-  abbreviateCommands = true
-  autoStash = true
+	abbreviateCommands = true
+	autoStash = true
 [alias]
-  pruneAll = !git remote prune origin && git reflog expire --all --expire=now && git gc --prune=now --aggressive
+	pruneAll = !git remote prune origin && git reflog expire --all --expire=now && git gc --prune=now --aggressive
