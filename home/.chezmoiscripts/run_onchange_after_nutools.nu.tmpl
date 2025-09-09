@@ -1,7 +1,7 @@
 {{- if lookPath "nu" -}}
 #!{{ lookPath "nu" }}
 
-let autoload = ($nu.user-autoload-dirs | first)
+let autoload = $nu.user-autoload-dirs | first
 mkdir $autoload
 
 {{- if lookPath "zoxide" }}
@@ -13,7 +13,7 @@ carapace _carapace nushell | save -f ($autoload | path join carapace.nu)
 {{- end }}
 
 {{- if lookPath "starship" }}
-starship init nu | save -f ($autoload | path join "starship.nu")
+starship init nu | save -f ($autoload | path join starship.nu)
 {{- end }}
 
 {{- if lookPath "winget" }}
