@@ -1,9 +1,13 @@
-{{- range $key, $val := .packages.windows.registry -}}
-{{- $path := $key | dir -}}
-{{- $name := $key | base }}
-if(Get-ItemProperty -ErrorAction SilentlyContinue -Path {{ $path | quote }} -Name {{ $name | quote }}) {
-	Set-ItemProperty -Path {{ $path | quote }} -Name {{ $name | quote }} -Value {{ $val | quote }}
+{{- range $reg := .packages.windows.registry -}}
+
+New-Item -Path {{ $reg.path | quote }} -ErrorAction SilentlyContinue
+
+{{ if and (hasKey $reg "key") (hasKey $reg "value") -}}
+if(Get-ItemProperty -ErrorAction SilentlyContinue -Path {{ $reg.path | quote }} -Name {{ $reg.key | quote }}) {
+	Set-ItemProperty -Path {{ $reg.path | quote }} -Name {{ $reg.key | quote }} -Value {{ $reg.value | quote }}
 } else {
-	New-ItemProperty -Path {{ $path | quote }} -Name {{ $name | quote }} -Value {{ $val | quote }} -PropertyType "String"
+	New-ItemProperty -Path {{ $reg.path | quote }} -Name {{ $reg.key | quote }} -Value {{ $reg.value | quote }} -PropertyType "String"
 }
+{{ end }}
+
 {{- end }}

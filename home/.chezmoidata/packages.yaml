@@ -52,8 +52,13 @@ packages:
     choco:
       - nerd-fonts-Hack
     registry:
-      HKCU:Control Panel/Desktop/MenuShowDelay: 200
-      HKCU:Control Panel/Keyboard/InitialKeyboardIndicators: 2
+      - path: HKCU:SOFTWARE/Classes/CLSID/{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}/InProcServer32
+      - path: HKCU:Control Panel/Desktop
+        key: MenuShowDelay
+        value: 200
+      - path: HKCU:Control Panel/Keyboard
+        key: InitialKeyboardIndicators
+        value: 2
   vscode:
     - catppuccin.catppuccin-vsc
     - catppuccin.catppuccin-vsc-icons
