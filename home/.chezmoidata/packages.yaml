@@ -8,7 +8,7 @@ packages:
       - lsd
       - most
       - ncdu
-      - tldr
+      - tealdeer
       - vim
       - zoxide
       - zsh
@@ -18,13 +18,12 @@ packages:
       - btop
       - duf
       - git-delta
-      - ghostty
       - glow
       - lsd
       - most
       - ncdu
       - neovim
-      - tldr
+      - tealdeer
       - vim
       - zoxide
       - zsh
