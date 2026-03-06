@@ -1,4 +1,3 @@
-{{- if lookPath "nu" -}}
 #!{{ lookPath "nu" }}
 
 let autoload = $nu.user-autoload-dirs | first
@@ -19,4 +18,3 @@ starship init nu | save -f ($autoload | path join starship.nu)
 {{- if lookPath "winget" }}
 http get {{ getRedirectedURL "https://github.com/nushell/nu_scripts/raw/HEAD/custom-completions/winget/winget-completions.nu" }} | save -f ($autoload | path join winget.nu)
 {{- end }}
-{{- end -}}
