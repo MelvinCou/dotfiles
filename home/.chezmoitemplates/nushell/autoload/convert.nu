@@ -90,7 +90,7 @@ def convert-audio [
     }
 }
 
-
+const video_formats = [ "mp4" "mkv" "mov" "avi" "mpg" "mts" "m2ts" ]
 
 def is-codec [file: path, codec: string] {
     let c = ( ^ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $file | str trim )
@@ -108,11 +108,11 @@ def transcode-hevc_qsv [
     --delete-original(-d) # Delete original file
 ] {
     let dir = $dir | replace-slash
-    let $preset = ($preset | default "medium")
+    let preset = ($preset | default "medium")
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
         let ext = ($f | path parse | get extension | str downcase)
-        $ext in ["mp4" "mkv" "avi" "mpg" "mts" "m2ts"]
+        $ext in $video_formats
     } | each { |file|
         if (is-codec $file "hevc") {
             print $"Déjà en H.265, ignoré: ($file)"
@@ -143,7 +143,7 @@ def transcode-av1_amf [
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
         let ext = ($f | path parse | get extension | str downcase)
-        $ext in ["mp4" "mkv" "avi" "mpg" "mts" "m2ts"]
+        $ext in $video_formats
     } | each { |f|
         if (is-codec $f "av1") {
             print $"Déjà en AV1, ignoré: ($f | path relative-to $env.PWD)"
@@ -179,7 +179,7 @@ def transcode-av1_aom [
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
         let ext = ($f | path parse | get extension | str downcase)
-        $ext in ["mp4" "mkv" "avi" "mpg" "mts" "m2ts"]
+        $ext in $video_formats
     } | each { |f|
         if (is-codec $f "av1") {
             print $"Déjà en AV1, ignoré: ($f | path relative-to $env.PWD)"
