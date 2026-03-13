@@ -1,0 +1,17 @@
+{
+    "editor.fontFamily": "'Hack Nerd Font Mono', Consolas, 'Courier New', monospace",
+    "explorer.confirmDragAndDrop": false,
+    "extensions.autoUpdate": false,
+    "files.trimTrailingWhitespace": true,
+    "nushellLanguageServer.hints.showInferredTypes": false,
+    "redhat.telemetry.enabled": false,
+    "telemetry.editStats.enabled": false,
+    "telemetry.feedback.enabled": false,
+    "telemetry.telemetryLevel": "error",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.windows": "Nushell",
+    "update.enableWindowsBackgroundUpdates": false,
+    "update.showReleaseNotes": false,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.iconTheme": "catppuccin-mocha"
+}
