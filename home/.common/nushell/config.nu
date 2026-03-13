@@ -7,7 +7,7 @@
 # (or import) custom commands, or run any other startup tasks.
 # See https://www.nushell.sh/book/configuration.html
 #
-# Nushell sets "sensible defaults" for most configuration settings, 
+# Nushell sets "sensible defaults" for most configuration settings,
 # so your `config.nu` only needs to override these defaults if desired.
 #
 # You can open this file in your default editor using:
@@ -39,12 +39,5 @@ $env.config.edit_mode = "vi"
 #
 # Tip: Set to "editor" to use the default editor on Unix platforms using
 #      the Alternatives system or equivalent
-$env.config.buffer_editor = "
-{{- if lookPath "nvim" -}}
-nvim
-{{- else if lookPath "vim" -}}
-vim
-{{- else if lookPath "notepad" -}}
-notepad
-{{- end -}}
-"
+$env.config.buffer_editor = [ "nvim", "vim", "notepad", "nano" ] | where {|x| which $x | is-not-empty} | first
+

@@ -1,4 +1,7 @@
 {
+    "[yaml]": {
+        "editor.tabSize": 2
+    },
     "editor.fontFamily": "'Hack Nerd Font Mono', Consolas, 'Courier New', monospace",
     "explorer.confirmDragAndDrop": false,
     "extensions.autoUpdate": false,

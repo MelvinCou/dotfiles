@@ -1,6 +1,8 @@
 .oh-my-zsh/cache/**
 .oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
 
+.common/**
+
 {{- if not (lookPath "nu") }}
 .chezmoiscripts/common/nushell/**
 {{- end }}
@@ -11,7 +13,6 @@
 .p10k.zsh
 
 .config/**/**
-!.config/starship.toml
 !.config/starship.toml
 !.config/git/**
 
