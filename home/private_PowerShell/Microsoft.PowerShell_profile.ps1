@@ -112,14 +112,25 @@ function pgrep($name) {
     Get-Process $name
 }
 
-## Final Line to set prompt
-Invoke-Expression (&starship init powershell)
+$modulePath = ($env:PSModulePath -split ';')[0]
+$carapace_cache = "$modulePath/carapace_cache.ps1"
 
-Invoke-Expression (zoxide init powershell | Out-String)
+New-Item -Force $modulePath -ItemType Directory >$null
+
+## Final Line to set prompt
+starship init powershell --print-full-init | Out-String | Invoke-Expression
+
+zoxide init powershell | Out-String | Invoke-Expression
 
 Set-PSReadLineOption -Colors @{ "Selection" = "`e[7m" }
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
-carapace _carapace | Out-String | Invoke-Expression
+if((Get-Item -Path $carapace_cache -ErrorAction SilentlyContinue).LastWriteTime -lt (Get-Date).AddDays(-7)) {
+	carapace _carapace | Out-file $carapace_cache
+}
+Get-Content $carapace_cache | Out-String | Invoke-Expression
+
+Remove-Variable modulePath
+Remove-Variable carapace_cache
 
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.

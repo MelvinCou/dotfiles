@@ -22,7 +22,8 @@
             "colorScheme": "Catppuccin Mocha",
             "font": 
             {
-                "face": "Hack Nerd Font Mono"
+                "face": "Hack Nerd Font Mono",
+                "size": 11
             }
         },
         "list": 
