@@ -19,9 +19,6 @@
             {{- writeToStdout "👀 WSL detected\n" -}}
         {{- end -}}
     {{- end -}}
-{{- else if eq .chezmoi.os "windows" -}}
-    {{- writeToStdout "💡 Script launched in Windows\n" -}}
-    {{- $wsl = promptBool "Install Arch WSL? (y/n)" false -}}
 {{- end -}}
 
 data:
