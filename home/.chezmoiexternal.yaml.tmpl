@@ -1,4 +1,9 @@
-{{- if eq .chezmoi.os "linux" -}}
+.local/share/fonts/hack:
+  type: archive
+  url: {{ gitHubLatestReleaseAssetURL "ryanoasis/nerd-fonts" "Hack.tar.xz" }}
+  exact: true
+
+{{ if eq .chezmoi.os "linux" -}}
 {{-   if not .codespaces -}}
 .config/nvim:
   type: git-repo
@@ -11,12 +16,6 @@
   pull:
     args:
       - --quiet
-{{-     if not .wsl }}
-.local/share/fonts/hack:
-  type: archive
-  url: {{ gitHubLatestReleaseAssetURL "ryanoasis/nerd-fonts" "Hack.tar.xz" }}
-  exact: true
-{{-     end }}
 {{-   end }}
 .oh-my-zsh:
   type: archive
@@ -36,4 +35,4 @@
   exact: true
   stripComponents: 1
   refreshPeriod: 504h
-{{- end }}
+{{- end -}}

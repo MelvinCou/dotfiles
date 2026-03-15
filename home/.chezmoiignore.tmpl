@@ -16,7 +16,9 @@
 !.config/starship.toml
 !.config/git/**
 
-.local/**
+.local/**/**
+!.local/share/fonts/hack/**
+
 {{- else }}
 {{-   if not .debian }}
 .chezmoiscripts/linux/debian/**

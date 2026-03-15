@@ -11,16 +11,3 @@ if (!$packages.Contains({{ . | quote }})) {
     winget install --accept-source-agreements --accept-package-agreements --id {{ . | quote }}
 }
 {{- end }}
-
-
-# Install hack nerd font
-$fonts = (New-Object -ComObject Shell.Application).Namespace(0x14)
-#if(($fonts.Items() | Where-Object {$_.Name -eq "Hack Nerd Font Mono"}) -eq $null) {
-    $webClient = New-Object System.Net.WebClient
-    $czip = "Hack.zip"
-    $webClient.DownloadFile({{ gitHubLatestReleaseAssetURL "ryanoasis/nerd-fonts" "Hack.zip" | quote }}, $czip)
-    Expand-Archive -Path $czip -DestinationPath "fonts" -Force
-    dir "fonts/*.ttf" | %{ $fonts.CopyHere($_.fullname) }
-    rm Hack.zip
-    rm -Recurse fonts
-#}
