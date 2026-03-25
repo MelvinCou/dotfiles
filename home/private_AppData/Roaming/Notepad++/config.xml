@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <NotepadPlus>
     <FindHistory nbMaxFindHistoryPath="10" nbMaxFindHistoryFilter="10" nbMaxFindHistoryFind="10" nbMaxFindHistoryReplace="10" matchWord="no" matchCase="no" wrap="yes" directionDown="yes" fifRecuisive="yes" fifInHiddenFolder="no" fifProjectPanel1="no" fifProjectPanel2="no" fifProjectPanel3="no" fifFilterFollowsDoc="no" fifFolderFollowsDoc="no" searchMode="0" transparencyMode="1" transparency="150" dotMatchesNewline="no" isSearch2ButtonsMode="no" regexBackward4PowerUser="no" bookmarkLine="no" purge="no">
-        <Filter name="" />
-        <Find name="MenuShowDelay" />
-        <Find name="YAMLValidation" />
-        <Find name="doValidation" />
-        <Find name="3.19.1" />
-        <Find name="path" />
-        <Replace name="" />
     </FindHistory>
     <FileBrowser latestSelectedItem="C:\Program Files\Notepad++\autoCompletion">
         <root foldername="C:\Program Files\Notepad++\autoCompletion" />
@@ -30,7 +23,7 @@
         <GUIConfig name="ScintillaViewsSplitter">vertical</GUIConfig>
         <GUIConfig name="UserDefineDlg" position="undocked">hide</GUIConfig>
         <GUIConfig name="TabSetting" replaceBySpace="no" size="4" backspaceUnindent="no" />
-        <GUIConfig name="AppPosition" x="-8" y="-7" width="1024" height="700" isMaximized="yes" />
+        <GUIConfig name="AppPosition" x="277" y="309" width="1024" height="700" isMaximized="yes" />
         <GUIConfig name="FindWindowPosition" left="631" top="283" right="1264" bottom="642" isLessModeOn="no" />
         <GUIConfig name="FinderConfig" wrappedLines="no" purgeBeforeEverySearch="no" showOnlyOneEntryPerFoundLine="yes" />
         <GUIConfig name="noUpdate" intervalDays="15" nextUpdateDate="20260314" autoUpdateMode="0">yes</GUIConfig>
