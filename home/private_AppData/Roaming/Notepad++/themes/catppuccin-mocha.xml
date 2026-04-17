@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<NotepadPlus modelFileLastModifiedDate="20260107" modelDate="20251223">
+<?xml version="1.0" encoding="UTF-8"?>
+<NotepadPlus modelFileLastModifiedDate="20260129" modelDate="20251223">
     <LexerStyles>
         <LexerType name="java" desc="Java" ext="">
             <WordsStyle name="DEFAULT" styleID="11" fgColor="CDD6F4" bgColor="1E1E2E" colorStyle="0" fontName="" fontStyle="0" fontSize=""></WordsStyle>
@@ -1368,7 +1368,7 @@
             <WordsStyle name="IDENTIFIER" styleID="6" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="VARIABLE" styleID="7" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="COL NAME" styleID="8" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
-            <WordsStyle name="COL NAME IN []&apos;s" styleID="16" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="2" fontSize=""></WordsStyle>
+            <WordsStyle name="COL NAME IN []'s" styleID="16" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="2" fontSize=""></WordsStyle>
         </LexerType>
         <LexerType name="mmixal" desc="MMIXAL" ext="">
             <WordsStyle name="DIVSION OF LEADING WHITESPACE IN LINE" styleID="0" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
@@ -1624,7 +1624,7 @@
             <WordsStyle name="BINARY ( 16#{1A803F59} )" styleID="11" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="MONEY" styleID="12" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="ISSUE { #123-CD-456 }" styleID="13" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
-            <WordsStyle name="TAG { &lt;TITLE HEIGHT=100&gt; }" styleID="14" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
+            <WordsStyle name="TAG { &lt;TITLE HEIGHT=100> }" styleID="14" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="FILE { %/C/WINNT/SOME.DLL }" styleID="15" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="EMAIL { JOE@MAIL.DOM }" styleID="16" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
             <WordsStyle name="URL { FTP://THERE.DOM }" styleID="17" fgColor="CDD6F4" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WordsStyle>
@@ -1802,7 +1802,7 @@
     </LexerStyles>
     <GlobalStyles>
         <!-- Attention : Don't modify the name of any styleID="0" -->
-        <WidgetStyle name="Default Style" styleID="32" fgColor="CDD6F4" bgColor="1E1E2E" fontName="Consolas" fontStyle="0" fontSize="10"></WidgetStyle>
+        <WidgetStyle name="Default Style" styleID="32" fgColor="CDD6F4" bgColor="1E1E2E" fontName="Hack Nerd Font Mono" fontStyle="0" fontSize="10"></WidgetStyle>
         <WidgetStyle name="Indent guideline style" styleID="37" fgColor="89B4FA" bgColor="1E1E2E" fontName="" fontStyle="0" fontSize=""></WidgetStyle>
         <WidgetStyle name="Brace highlight style" styleID="34" fgColor="CDD6F4" bgColor="414356" fontName="" fontStyle="1" fontSize="10"></WidgetStyle>
         <WidgetStyle name="Bad brace colour" styleID="35" fgColor="11111B" bgColor="F38BA8" fontName="" fontStyle="0" fontSize=""></WidgetStyle>
