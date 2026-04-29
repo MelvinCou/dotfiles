@@ -13,6 +13,7 @@
     "telemetry.telemetryLevel": "error",
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.defaultProfile.windows": "Nushell",
+    "terminal.integrated.fontSize": 12,
     "update.enableWindowsBackgroundUpdates": false,
     "update.showReleaseNotes": false,
     "workbench.colorTheme": "Catppuccin Mocha",

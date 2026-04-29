@@ -31,45 +31,15 @@
       }
     },
     {
-      "uuid": "{3EF45183-0C5C-4FE8-9B65-9A6C99EAEDEF}",
-      "name": "4k vertical",
+      "uuid": "{EC0EE452-D7A5-4045-B12C-81BB20097FEA}",
+      "name": "4k stream",
       "type": "grid",
       "info": {
         "rows": 2,
         "columns": 2,
         "rows-percentage": [
-          5000,
-          5000
-        ],
-        "columns-percentage": [
-          4999,
-          5001
-        ],
-        "cell-child-map": [
-          [
-            0,
-            1
-          ],
-          [
-            0,
-            2
-          ]
-        ],
-        "show-spacing": false,
-        "spacing": 16,
-        "sensitivity-radius": 0
-      }
-    },
-    {
-      "uuid": "{D53EF63F-AF67-4050-9A9F-4097AD09919B}",
-      "name": "4k horizontal",
-      "type": "grid",
-      "info": {
-        "rows": 2,
-        "columns": 2,
-        "rows-percentage": [
-          5000,
-          5000
+          5112,
+          4888
         ],
         "columns-percentage": [
           4999,
@@ -82,7 +52,7 @@
           ],
           [
             1,
-            1
+            3
           ]
         ],
         "show-spacing": false,
