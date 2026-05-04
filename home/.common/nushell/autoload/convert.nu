@@ -1,5 +1,7 @@
+module convert {
+
 def "nu-complete convert image format" [] {
-    [ "avif","heif","jpg","png","gif" ]
+    [ avif heif jpg png gif ]
 }
 
 # Windows having \ in path, the glob command may fail
@@ -9,15 +11,13 @@ def replace-slash []: string -> string {
 }
 
 # Convert images with ImageMagick
-def convert-images [
+export def convert-images [
     dir: path,
-    --format: string@"nu-complete convert image format" # Image format to convert to
-    --quality: int # Quality of the export
+    --format: string@"nu-complete convert image format" = avif # Image format to convert to
+    --quality: int = 90 # Quality of the export
     --delete-original(-d) # Delete original file
 ] {
     let dir = $dir | replace-slash
-    let $format = ($format | default "avif")
-    let $quality = ($quality | default 90)
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |file|
         let ext: string = ($file | path parse | get extension | str downcase)
@@ -46,23 +46,21 @@ def convert-images [
 }
 
 def "nu-complete convert audio format" [] {
-    [ "mp3","opus","wav" ]
+    [ mp3 opus wav ]
 }
 
 def "nu-complete audio bitrate" [] {
-    [ "32k", "64k","96k","128k" ]
+    [ 32k 64k 96k 128k ]
 }
 
 # Convert audio with FFmpeg
-def convert-audio [
+export def convert-audio [
     dir: path,
-    --format: string@"nu-complete convert audio format" # Audio format to convert to
-    --audio-bitrate: string@"nu-complete audio bitrate" # Audio bitrate (default: 96k)
+    --format: string@"nu-complete convert audio format" = opus # Audio format to convert to
+    --audio-bitrate: string@"nu-complete audio bitrate" = 96k # Audio bitrate
     --delete-original(-d) # Delete original file
 ] {
     let dir = $dir | replace-slash
-    let $format = ($format | default "opus")
-    let audio_bitrate = ($audio_bitrate | default "96k")
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |file|
         let ext: string = ($file | path parse | get extension | str downcase)
@@ -90,7 +88,7 @@ def convert-audio [
     }
 }
 
-const video_formats = [ "mp4" "mkv" "mov" "avi" "mpg" "mts" "m2ts" ]
+const video_formats = [ mp4 mkv mov avi mpg mts m2ts ]
 
 def is-codec [file: path, codec: string] {
     let c = ( ^ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=noprint_wrappers=1:nokey=1 $file | str trim )
@@ -98,17 +96,16 @@ def is-codec [file: path, codec: string] {
 }
 
 def "nu-complete transcode h265 preset" [] {
-    [ "veryfast","faster","fast","medium","slow","slower","veryslow" ]
+    [ veryfast faster fast medium slow slower veryslow ]
 }
 
 # Transcode videos to h265 with FFmpeg
-def transcode-hevc_qsv [
+export def transcode-hevc_qsv [
     dir: path,
-    --preset: string@"nu-complete transcode h265 preset" # Transcoding speed
+    --preset: string@"nu-complete transcode h265 preset" = medium # Transcoding speed
     --delete-original(-d) # Delete original file
 ] {
     let dir = $dir | replace-slash
-    let preset = ($preset | default "medium")
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
         let ext = ($f | path parse | get extension | str downcase)
@@ -135,7 +132,7 @@ def transcode-hevc_qsv [
 }
 
 # Transcode videos to av1 with FFmpeg
-def transcode-av1_amf [
+export def transcode-av1_amf [
     dir: path,
     --delete-original(-d) # Delete original file
 ] {
@@ -165,17 +162,15 @@ def transcode-av1_amf [
 }
 
 # Transcode videos to av1 with FFmpeg
-def transcode-av1_aom [
+export def transcode-av1_aom [
     dir: path,
-    --crf: int # Quality level (default: 23)
+    --crf: int = 23 # Quality level
     --cpu-used: int # Number of cpu to use
-    --audio-bitrate: string@"nu-complete audio bitrate" # Audio bitrate (default: 96k)
+    --audio-bitrate: string@"nu-complete audio bitrate" = 96k # Audio bitrate
     --delete-original(-d) # Delete original file
 ] {
     let dir = $dir | replace-slash
-    let crf = ($crf | default 23)
     let cpu_used = ($cpu_used | default (sys cpu | length) | [$in, 8] | math min)
-    let audio_bitrate = ($audio_bitrate | default "96k")
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
         let ext = ($f | path parse | get extension | str downcase)
@@ -199,3 +194,7 @@ def transcode-av1_aom [
         }
     } | ignore
 }
+
+}
+
+use convert *
