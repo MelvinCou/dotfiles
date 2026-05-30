@@ -1,0 +1,15 @@
+[General]
+autoSaveImage=true
+clipboardGroup=PostScreenshotCopyImage
+
+[ImageSave]
+lastImageSaveLocation=file:///home/elr/Images/Screenshots/Screenshot_20260425_155755.avif
+preferredImageFormat=AVIF
+translatedScreenshotsFolder=Screenshots
+
+[VideoSave]
+preferredVideoFormat=2
+translatedScreencastsFolder=Screencasts
+
+[ViewerWindow]
+3840x2160 screen: Window-Maximized=true
