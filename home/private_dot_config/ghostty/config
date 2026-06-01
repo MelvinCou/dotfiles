@@ -8,3 +8,10 @@ font-family-bold-italic = Hack Nerd Font Mono Bold Italic
 
 window-height = 32
 window-width = 121
+window-theme = ghostty
+
+background-opacity = 0.5
+background-blur = true
+
+quit-after-last-window-closed = true
+quit-after-last-window-closed-delay = 10m
