@@ -20,7 +20,7 @@ export def convert-images [
     let dir = $dir | replace-slash
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |file|
-        let ext: string = ($file | path parse | get extension | str downcase)
+        let ext: string = ($file | path parse | get extension | str lowercase)
         $ext in ["jpg" "jpeg" "png" "webp" "heic" "heif" "bmp" "tif"]
     } | each { |file|
         let parsed: record = ($file | path parse | select parent stem)
@@ -63,7 +63,7 @@ export def convert-audio [
     let dir = $dir | replace-slash
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |file|
-        let ext: string = ($file | path parse | get extension | str downcase)
+        let ext: string = ($file | path parse | get extension | str lowercase)
         $ext in ["mp3" "wav"]
     } | each { |file|
         let parsed: record = ($file | path parse | select parent stem)
@@ -108,7 +108,7 @@ export def transcode-hevc_qsv [
     let dir = $dir | replace-slash
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
-        let ext = ($f | path parse | get extension | str downcase)
+        let ext = ($f | path parse | get extension | str lowercase)
         $ext in $video_formats
     } | each { |file|
         if (is-codec $file "hevc") {
@@ -139,7 +139,7 @@ export def transcode-av1_amf [
     let dir = $dir | replace-slash
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
-        let ext = ($f | path parse | get extension | str downcase)
+        let ext = ($f | path parse | get extension | str lowercase)
         $ext in $video_formats
     } | each { |f|
         if (is-codec $f "av1") {
@@ -173,7 +173,7 @@ export def transcode-av1_aom [
     let cpu_used = ($cpu_used | default (sys cpu | length) | [$in, 8] | math min)
 
     glob --no-symlink --no-dir ($"($dir)/**/*") | where { |f|
-        let ext = ($f | path parse | get extension | str downcase)
+        let ext = ($f | path parse | get extension | str lowercase)
         $ext in $video_formats
     } | each { |f|
         if (is-codec $f "av1") {
