@@ -1,0 +1,8 @@
+#!{{ lookPath "sh" }}
+# {{ includeTemplate ".chezmoiexternal.yaml.tmpl" . | sha256sum }}
+set -eu
+
+{{- if lookPath "fc-cache" }}
+echo "Updating font cache"
+fc-cache -f
+{{- end }}

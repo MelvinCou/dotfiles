@@ -1,0 +1,3 @@
+*.yaml.tmpl linguist-language=yaml
+*.*sh.tmpl linguist-language=bash
+*.ps1.tmpl linguist-language=powershell

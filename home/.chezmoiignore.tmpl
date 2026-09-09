@@ -1,0 +1,35 @@
+.oh-my-zsh/cache/**
+.oh-my-zsh/custom/themes/powerlevel10k/**/*.zwc
+
+.common/**
+
+{{- if not (lookPath "nu") }}
+.chezmoiscripts/common/nushell/**
+{{- end }}
+
+{{- if ne .chezmoi.os "linux" }}
+.chezmoiscripts/linux/**
+.zshrc
+.p10k.zsh
+
+.config/**/**
+!.config/starship.toml
+!.config/git/**
+
+.local/**/**
+!.local/share/fonts/hack/**
+
+{{- else }}
+{{-   if not .debian }}
+.chezmoiscripts/linux/debian/**
+{{-   end }}
+{{-   if ne .chezmoi.osRelease.id "arch" }}
+.chezmoiscripts/linux/arch/**
+{{-   end }}
+{{- end }}
+
+{{ if ne .chezmoi.os "windows" }}
+.chezmoiscripts/windows/**
+AppData/**
+PowerShell/**
+{{- end }}

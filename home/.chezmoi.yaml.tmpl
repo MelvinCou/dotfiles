@@ -1,0 +1,34 @@
+{{- $codespaces:= or (env "CODESPACES") (env "REMOTE_CONTAINERS_IPC") (eq .chezmoi.username "root" "ubuntu" "vagrant" "vscode") -}}
+{{- $debian:= false -}}
+{{- $wsl:= false -}}
+
+{{- if $codespaces -}}
+    {{- writeToStdout "👀 Codespace detected\n" -}}
+{{- end -}}
+
+{{- if eq .chezmoi.os "linux" -}}
+    {{- $debian = eq .chezmoi.osRelease.id "debian" "ubuntu" -}}
+    {{- if $debian -}}
+        {{- writeToStdout "💡 Script launched in Debian\n" -}}
+    {{- end -}}
+
+    {{- if eq .chezmoi.osRelease.id "arch" -}}
+        {{- writeToStdout "💡 Script launched in Archlinux\n" -}}
+        {{- $wsl = contains "WSL" .chezmoi.kernel.osrelease -}}
+        {{- if $wsl -}}
+            {{- writeToStdout "👀 WSL detected\n" -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+data:
+  codespaces: {{ $codespaces }}
+  debian: {{ $debian }}
+  wsl: {{ $wsl }}
+scriptEnv:
+  DEBIAN_FRONTEND: noninteractive
+{{- if eq .chezmoi.os "windows" }}
+cd:
+  command: nu
+useBuiltinGit: true
+{{- end -}}

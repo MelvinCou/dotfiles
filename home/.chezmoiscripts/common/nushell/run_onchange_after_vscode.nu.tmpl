@@ -1,0 +1,14 @@
+#!{{ lookPath "nu" }}
+{{- if and (lookPath "code") (not .codespaces) }}
+print "Installing Visual studio code extensions"
+
+(^code --update-extensions) e>| ignore
+let extensions = (^code --list-extensions)
+{{-   range .packages.vscode }}
+if not ($extensions | str contains {{ . | quote }}) {
+    print "Installing {{ . }}"
+    (^code --install-extension {{ . | quote }}) | ignore
+}
+{{-   end }}
+
+{{- end }}

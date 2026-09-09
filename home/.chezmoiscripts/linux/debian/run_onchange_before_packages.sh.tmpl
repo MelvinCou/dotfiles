@@ -1,0 +1,9 @@
+#!{{ lookPath "sh" }}
+set -eu
+
+echo "Installing packages"
+sudo apt-get update -qqy
+{{- range .packages.debian.apt }}
+# Those packages may not be available depending of distro variant
+sudo apt-get install -qqy --no-install-recommends {{ . | quote }} 1>/dev/null || true
+{{- end }}

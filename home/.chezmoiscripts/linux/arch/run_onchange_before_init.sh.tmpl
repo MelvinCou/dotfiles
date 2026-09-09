@@ -1,0 +1,23 @@
+#!{{ lookPath "sh" }}
+set -eu
+
+{{- if .wsl }}
+sudo pacman-key --init
+sudo pacman-key --populate archlinux
+{{- end }}
+
+# Work in temp folder
+cd $(mktemp -d)
+echo "Installing packages"
+
+# yay
+sudo pacman -Sy --needed --noconfirm git base-devel
+git clone --depth 1 https://aur.archlinux.org/yay-bin.git
+cd yay-bin && makepkg -si --needed --noconfirm
+yay -Sa --save --editmenu --diffmenu=false --sudoloop
+# rankmirrors
+yay -Sa --needed --noconfirm rankmirrors
+# Run pupdaterepos
+sudo curl "https://archlinux.org/mirrorlist/?country=FR&protocol=https&use_mirror_status=on" | sudo tee /etc/pacman.d/mirrorlist.backup
+sudo sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup | sudo tee /etc/pacman.d/mirrorlist

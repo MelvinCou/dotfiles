@@ -1,0 +1,38 @@
+.local/share/fonts/hack:
+  type: archive
+  url: {{ gitHubLatestReleaseAssetURL "ryanoasis/nerd-fonts" "Hack.tar.xz" }}
+  exact: true
+
+{{ if eq .chezmoi.os "linux" -}}
+{{-   if not .codespaces -}}
+.config/nvim:
+  type: git-repo
+  url: https://github.com/NvChad/starter.git
+  refreshPeriod: 168h
+  clone:
+    args:
+      - --quiet
+      - --filter=tree:0
+  pull:
+    args:
+      - --quiet
+{{-   end }}
+.oh-my-zsh:
+  type: archive
+  url: https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz
+  exact: true
+  stripComponents: 1
+  refreshPeriod: 336h
+.oh-my-zsh/custom/plugins/zsh-completions:
+  type: archive
+  url: https://github.com/zsh-users/zsh-completions/archive/master.tar.gz
+  exact: true
+  stripComponents: 1
+  refreshPeriod: 504h
+.oh-my-zsh/custom/themes/powerlevel10k:
+  type: archive
+  url: https://github.com/romkatv/powerlevel10k/archive/master.tar.gz
+  exact: true
+  stripComponents: 1
+  refreshPeriod: 504h
+{{- end -}}

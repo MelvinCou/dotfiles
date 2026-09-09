@@ -1,0 +1,7 @@
+# {{ includeTemplate ".chezmoiexternal.yaml.tmpl" . | sha256sum }}
+
+$fontNamespace = 0x14
+$YesToAll = 0x10
+
+$fonts = (New-Object -ComObject Shell.Application).Namespace($fontNamespace)
+$fonts.CopyHere("{{ .chezmoi.destDir -}} /.local/share/fonts/hack/*.ttf", $YesToAll)

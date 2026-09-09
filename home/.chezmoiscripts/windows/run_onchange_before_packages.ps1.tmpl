@@ -1,0 +1,13 @@
+$packages = $(winget list) | Out-String
+{{- range .packages.windows.winget_user }}
+if (!$packages.Contains({{ . | quote }})) {
+    echo "Installing {{ . }}"
+    winget install --accept-source-agreements --accept-package-agreements --scope user --id {{ . | quote }}
+}
+{{- end }}
+{{- range .packages.windows.winget_admin }}
+if (!$packages.Contains({{ . | quote }})) {
+    echo "Installing {{ . }}"
+    winget install --accept-source-agreements --accept-package-agreements --id {{ . | quote }}
+}
+{{- end }}

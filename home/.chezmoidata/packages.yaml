@@ -1,0 +1,65 @@
+packages:
+  debian:
+    apt:
+      - bat
+      - btop
+      - duf
+      - git-extras
+      - lsd
+      - most
+      - ncdu
+      - tealdeer
+      - vim
+      - zoxide
+      - zsh
+  arch:
+    pacman:
+      - bat
+      - btop
+      - duf
+      - git-delta
+      - glow
+      - lsd
+      - most
+      - ncdu
+      - neovim
+      - tealdeer
+      - vim
+      - zoxide
+      - zsh
+    aur:
+      - brave-bin
+      - git-extras
+      - visual-studio-code-bin
+  windows:
+    winget_user:
+      - ajeetdsouza.zoxide
+      - GIMP.GIMP.3
+      - Git.Git
+      - LocalSend.LocalSend
+      - Microsoft.PowerToys
+      - Microsoft.VisualStudioCode
+      - Nushell.Nushell
+      - rsteube.Carapace
+      - Ventoy.Ventoy
+    winget_admin:
+      - 7zip.7zip
+      - Notepad++.Notepad++
+      - Starship.Starship
+      - ONLYOFFICE.DesktopEditors
+      - VideoLAN.VLC
+    registry:
+      - path: HKCU:SOFTWARE/Classes/CLSID/{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}/InProcServer32
+      - path: HKCU:Control Panel/Desktop
+        key: MenuShowDelay
+        value: 200
+      - path: HKCU:Control Panel/Keyboard
+        key: InitialKeyboardIndicators
+        value: 2
+  vscode:
+    - catppuccin.catppuccin-vsc
+    - catppuccin.catppuccin-vsc-icons
+    - github.codespaces
+    - github.vscode-github-actions
+    - github.vscode-pull-request-github
+    - ms-vscode-remote.remote-containers

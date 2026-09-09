@@ -1,0 +1,16 @@
+#!{{ lookPath "nu" }}
+
+let autoload = $nu.user-autoload-dirs | first
+mkdir $autoload
+
+{{- if lookPath "zoxide" }}
+zoxide init nushell | save -f ($autoload | path join zoxide.nu)
+{{- end }}
+
+{{- if lookPath "carapace" }}
+carapace _carapace nushell | save -f ($autoload | path join carapace.nu)
+{{- end }}
+
+{{- if lookPath "starship" }}
+starship init nu | save -f ($autoload | path join starship.nu)
+{{- end }}
